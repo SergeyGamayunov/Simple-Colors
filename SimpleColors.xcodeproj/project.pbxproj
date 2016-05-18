@@ -7,14 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		843A8B581CE4EB1100CE797C /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843A8B561CE4EB1100CE797C /* Realm.framework */; };
+		843A8B591CE4EB1100CE797C /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 843A8B561CE4EB1100CE797C /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		843A8B5A1CE4EB1200CE797C /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843A8B571CE4EB1100CE797C /* RealmSwift.framework */; };
+		843A8B5B1CE4EB1200CE797C /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 843A8B571CE4EB1100CE797C /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8442B5831CE5C4510027A9F6 /* ColorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8442B5821CE5C4510027A9F6 /* ColorTableViewController.swift */; };
+		84C855261CEAF9B3002FBE4B /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C855251CEAF9B3002FBE4B /* extension.swift */; };
+		84D324E61CE4F663008D2E32 /* Color-Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D324E51CE4F663008D2E32 /* Color-Name.swift */; };
 		84DDAB211CDCED05009893E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDAB201CDCED05009893E3 /* AppDelegate.swift */; };
 		84DDAB231CDCED05009893E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDAB221CDCED05009893E3 /* ViewController.swift */; };
 		84DDAB261CDCED05009893E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84DDAB241CDCED05009893E3 /* Main.storyboard */; };
 		84DDAB281CDCED05009893E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84DDAB271CDCED05009893E3 /* Assets.xcassets */; };
 		84DDAB2B1CDCED05009893E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84DDAB291CDCED05009893E3 /* LaunchScreen.storyboard */; };
+		84E743811CEC9EB900849222 /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E743801CEC9EB800849222 /* ImageScrollView.swift */; };
+		84F3A1641CDF9C4B00C238D6 /* ColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3A1631CDF9C4B00C238D6 /* ColorModel.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		843A8B5C1CE4EB1200CE797C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				843A8B5B1CE4EB1200CE797C /* RealmSwift.framework in Embed Frameworks */,
+				843A8B591CE4EB1100CE797C /* Realm.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		843A8B561CE4EB1100CE797C /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		843A8B571CE4EB1100CE797C /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
+		8442B5821CE5C4510027A9F6 /* ColorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTableViewController.swift; sourceTree = "<group>"; };
+		84C855251CEAF9B3002FBE4B /* extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
+		84D324E51CE4F663008D2E32 /* Color-Name.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color-Name.swift"; sourceTree = "<group>"; };
 		84DDAB1D1CDCED05009893E3 /* SimpleColors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleColors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DDAB201CDCED05009893E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84DDAB221CDCED05009893E3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +51,8 @@
 		84DDAB271CDCED05009893E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84DDAB2A1CDCED05009893E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84DDAB2C1CDCED05009893E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84E743801CEC9EB800849222 /* ImageScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
+		84F3A1631CDF9C4B00C238D6 /* ColorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,15 +60,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				843A8B5A1CE4EB1200CE797C /* RealmSwift.framework in Frameworks */,
+				843A8B581CE4EB1100CE797C /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84C855271CEAFDA3002FBE4B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				84DDAB221CDCED05009893E3 /* ViewController.swift */,
+				8442B5821CE5C4510027A9F6 /* ColorTableViewController.swift */,
+				84C855251CEAF9B3002FBE4B /* extension.swift */,
+				84E743801CEC9EB800849222 /* ImageScrollView.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		84C855281CEAFDB4002FBE4B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84D324E51CE4F663008D2E32 /* Color-Name.swift */,
+				84F3A1631CDF9C4B00C238D6 /* ColorModel.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		84DDAB141CDCED05009893E3 = {
 			isa = PBXGroup;
 			children = (
+				843A8B561CE4EB1100CE797C /* Realm.framework */,
+				843A8B571CE4EB1100CE797C /* RealmSwift.framework */,
 				84DDAB1F1CDCED05009893E3 /* SimpleColors */,
 				84DDAB1E1CDCED05009893E3 /* Products */,
 			);
@@ -55,7 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				84DDAB201CDCED05009893E3 /* AppDelegate.swift */,
-				84DDAB221CDCED05009893E3 /* ViewController.swift */,
+				84C855281CEAFDB4002FBE4B /* Model */,
+				84C855271CEAFDA3002FBE4B /* Controller */,
 				84DDAB241CDCED05009893E3 /* Main.storyboard */,
 				84DDAB271CDCED05009893E3 /* Assets.xcassets */,
 				84DDAB291CDCED05009893E3 /* LaunchScreen.storyboard */,
@@ -74,6 +130,8 @@
 				84DDAB191CDCED05009893E3 /* Sources */,
 				84DDAB1A1CDCED05009893E3 /* Frameworks */,
 				84DDAB1B1CDCED05009893E3 /* Resources */,
+				843A8B5C1CE4EB1200CE797C /* Embed Frameworks */,
+				843A8B5D1CE4EB6500CE797C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -96,6 +154,7 @@
 				TargetAttributes = {
 					84DDAB1C1CDCED05009893E3 = {
 						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = Y3W3883E2B;
 					};
 				};
 			};
@@ -130,12 +189,33 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		843A8B5D1CE4EB6500CE797C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		84DDAB191CDCED05009893E3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				84DDAB231CDCED05009893E3 /* ViewController.swift in Sources */,
+				84E743811CEC9EB900849222 /* ImageScrollView.swift in Sources */,
+				84F3A1641CDF9C4B00C238D6 /* ColorModel.swift in Sources */,
+				84D324E61CE4F663008D2E32 /* Color-Name.swift in Sources */,
+				84C855261CEAF9B3002FBE4B /* extension.swift in Sources */,
+				8442B5831CE5C4510027A9F6 /* ColorTableViewController.swift in Sources */,
 				84DDAB211CDCED05009893E3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,10 +327,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SimpleColors/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Serj.SimpleColors;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -258,10 +346,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SimpleColors/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Serj.SimpleColors;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -284,6 +380,7 @@
 				84DDAB311CDCED05009893E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
