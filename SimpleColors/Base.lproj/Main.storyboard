@@ -339,7 +339,9 @@
                             <outlet property="delegate" destination="Mbt-CQ-64V" id="cHn-jh-qTT"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="MY COLORS" id="0Tf-SD-Wbj"/>
+                    <navigationItem key="navigationItem" title="MY COLORS" id="0Tf-SD-Wbj">
+                        <barButtonItem key="backBarButtonItem" title="&lt;" id="1H5-Mc-PwH"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TYJ-hi-2Xe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

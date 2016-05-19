@@ -30,13 +30,13 @@ class DataBase {
         
     }
     
-    class func removeColorAtIndex(index: Int) {
+    class func removeColorAtIndex(index: Int){
         try! realm.write({
             realm.delete(colors[index])
         })
-        
     }
     
+   
     
 }
 

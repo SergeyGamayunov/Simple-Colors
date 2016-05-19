@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ColorTableViewController: UITableViewController {
+class ColorTableViewController: DragNDropViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,11 @@ class ColorTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    
+    override func viewWillAppear(animated: Bool) {
+        navigationItem.backBarButtonItem?.style = .Done
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -85,7 +89,7 @@ class ColorTableViewController: UITableViewController {
         }    
     }
     
-
+  
     /*
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
