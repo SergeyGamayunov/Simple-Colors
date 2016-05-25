@@ -10,10 +10,12 @@ import UIKit
 
 
 
-class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate {
     
-    var colorModel: ColorModel = ColorModel(color: UIColor.whiteColor())
-    var viewForColor: UIImageView = UIImageView()
+    var colorModel = ColorModel(color: UIColor.whiteColor())
+    var scrollViewForColor = ImageScrollView()
+    var imageViewForColor = UIImageView()
+    var viewForSampleColor = UIButton()
     var isScrollViewAppeared: Bool = false {
         didSet {
             if isScrollViewAppeared == true {
@@ -23,6 +25,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             }
         }
     }
+    var isSampleColorViewAppeared: Bool = false
     
 //MARK: - Outlets
     
@@ -47,19 +50,23 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("Main object is \(DataBase.objects)")
+        print("Number of Colors is \(DataBase.numberOfColors)")
+        
         if let redSliderImage = UIImage(named: "RedSliderBig") {
             let smallImage = resizeImage(redSliderImage, newWidth: 46)
             redSlider.setThumbImage(smallImage, forState: .Normal)
         }
         if let greenSliderImage = UIImage(named: "GreenSliderBig") {
-            let smallGreenImage = resizeImage(greenSliderImage, newWidth: 46)
-            greenSlider.setThumbImage(smallGreenImage, forState: .Normal)
+            //let smallGreenImage = resizeImage(greenSliderImage, newWidth: 46)
+            greenSlider.setThumbImage(greenSliderImage, forState: .Normal)
         }
-        
         
         makeRoundedView()
         makeAndSetRandomColor()
     }
+
+    
 //MARK: - helping methods
     func disableAll(b: Bool) {
         let all = [
@@ -68,7 +75,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         for view in all {
             view.userInteractionEnabled = !b
         }
-  
     }
     
     func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
@@ -136,8 +142,15 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         return UIColor(red: r, green: g, blue: b, alpha: 1.0)
     }
 
+//MARK: - function for sliders and plus/minus buttons
     
-//MARK: - function for buttons
+    @IBAction func slidersTouched(sender: UISlider) {
+        
+        let colorFromSlider = getColorFromSliders()
+        colorModel.setColorAsCurrent(colorFromSlider)
+        changeBackGroundColor()
+        changeSlidersAndLabels()
+    }
     
     @IBAction func plusButton(sender: UIButton) {
         guard let color: Colors = Colors(rawValue: sender.tag) else {return}
@@ -187,17 +200,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         }
     }
     
+    //MARK: - Buttons
+
     @IBAction func randomColorButton(sender: UIButton) {
         makeAndSetRandomColor()
-    }
-    
-    @IBAction func slidersTouched(sender: UISlider) {
-        
-        let colorFromSlider = getColorFromSliders()
-        colorModel.setColorAsCurrent(colorFromSlider)
-        changeBackGroundColor()
-        changeSlidersAndLabels()
-        
     }
     
     @IBAction func photoButton(sender: UIButton) {
@@ -208,15 +214,21 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         
     }
     
-    @IBAction func addToDataBaseButton(sender: UIButton) {
-        
+    @IBAction func cameraButton(sender: UIButton) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .Camera
+        imagePicker.delegate = self
+        self.presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
+    func addToDataBase(color: UIColor) {
         var name = ""
         let alCont = UIAlertController(title: "Name:", message: "Type the name of a color", preferredStyle: .Alert)
         //OK button
         let alAction = UIAlertAction(title: "OK", style: .Default) { (_) in
             name = alCont.textFields![0].text!
-            DataBase.addColorToDataBase(self.colorModel.color, name: name) //adding color to DB
-            
+            DataBase.addColorToDataBase(color, name: name) //adding color to DB
+            //self.viewForSampleColor.removeFromSuperview()
             self.performSegueWithIdentifier("ColorTableSegue", sender: nil)
         }
         //Cancel button
@@ -236,6 +248,16 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         presentViewController(alCont, animated: true, completion: nil)
     }
     
+    @IBAction func addToDataBaseButton(sender: UIButton) {
+        if !isSampleColorViewAppeared {
+            addToDataBase(colorModel.color)
+        } else {
+            addToDataBase(viewForSampleColor.backgroundColor!)
+            viewForSampleColor.removeFromSuperview()
+        }
+        
+    }
+    
     //MARK: - UIImagePickerControllerDelegate Protocol Functions
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
@@ -245,7 +267,11 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         
         //make rect for view
         let imageHeight = imageForColor.size.height
+        print("image height \(imageHeight)")
+        
         let imageWidth = imageForColor.size.width
+        print("image Width \(imageWidth)")
+        
         let ratio = imageHeight/imageWidth
         let viewWidth = self.view.frame.size.width
         let viewHeight = viewWidth * ratio
@@ -255,45 +281,71 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         //dismiss library
         dismissViewControllerAnimated(true, completion: nil)
         
-        //view appears with image
-        viewForColor = UIImageView(frame: frameForScrollView)
-        viewForColor.image = imageForColor
+//        viewForColor.layer.masksToBounds = true;
+//        viewForColor.layer.contentsScale = UIScreen.mainScreen().scale;
+//        viewForColor.layer.masksToBounds = false;
+//        viewForColor.clipsToBounds = true;
+
         
-        viewForColor.center = view.center
-        print("Frame of Scroll View after settings \(viewForColor.frame)")
-        viewForColor.layer.cornerRadius = 20;
-        viewForColor.layer.masksToBounds = true;
+        scrollViewForColor.frame = frameForScrollView
+        scrollViewForColor.center = view.center
         
-        viewForColor.layer.borderColor = UIColor.blackColor().CGColor;
-        viewForColor.layer.borderWidth = 6;
+        imageViewForColor = UIImageView(image: imageForColor)
         
-        viewForColor.layer.contentsScale = UIScreen.mainScreen().scale;
-        
-        viewForColor.layer.masksToBounds = false;
-        viewForColor.clipsToBounds = true;
-        
+        scrollViewForColor.addSubview(imageViewForColor)
+        scrollViewForColor.contentSize = imageViewForColor.bounds.size
+        scrollViewForColor.delegate = self
         view.addOpaqueView(0.7, color: UIColor.blackColor())
-        view.addSubview(viewForColor)
-        viewForColor.userInteractionEnabled = true
-        view.bringSubviewToFront(viewForColor)
+        view.addSubview(scrollViewForColor)
         isScrollViewAppeared = true
+        
+        let longpress = UILongPressGestureRecognizer(target: self, action: #selector(ViewController.showSampleColor(_:)))
+        scrollViewForColor.addGestureRecognizer(longpress)
+        
     }
+    
+    func showSampleColor(longpress: UILongPressGestureRecognizer) {
+        let touch = longpress.locationInView(imageViewForColor)
+        let x = Int(touch.x)
+        let y = Int(touch.y)
+        let colorOfTouch = imageViewForColor.image![x, y]
+        
+        viewForSampleColor.frame = CGRect(x: x, y: y, width: 70, height: 70)
+        viewForSampleColor.layer.borderWidth = 4
+        viewForSampleColor.layer.backgroundColor = UIColor.blackColor().CGColor
+        viewForSampleColor.layer.cornerRadius = 35
+        viewForSampleColor.backgroundColor = colorOfTouch!
+        viewForSampleColor.center = view.center
+        view.addSubview(viewForSampleColor)
+        isSampleColorViewAppeared = true
+        scrollViewForColor.userInteractionEnabled = false
+        viewForSampleColor.addTarget(self, action: #selector(ViewController.addToDataBaseButton(_:)), forControlEvents: .TouchUpInside)
+
+    }
+    
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
         if !isScrollViewAppeared {
             return
         }
-        
+
         //got point of touch and dismiss ScrollView
         if let touchPlace = touches.first?.locationInView(view) {
-            let isInside = CGRectContainsPoint(viewForColor.frame, touchPlace)
+            
+            let isInside = CGRectContainsPoint(scrollViewForColor.frame, touchPlace)
             print(" Place of touch is \(touchPlace) and is Inside \(isInside)")
             if !isInside {
-                print(viewForColor.frame)
-                viewForColor.removeFromSuperview()
+                scrollViewForColor.removeFromSuperview()
                 view.removeOpaqueView()
                 isScrollViewAppeared = false
+            }
+            
+            let isInsideSampleView = CGRectContainsPoint(viewForSampleColor.frame, touchPlace)
+            if !isInsideSampleView {
+                viewForSampleColor.removeFromSuperview()
+                isSampleColorViewAppeared = false
+                scrollViewForColor.userInteractionEnabled = true
             }
         }
     }

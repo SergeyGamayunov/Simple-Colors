@@ -45,7 +45,6 @@ class ColorModel {
             randomArray[i] = CGFloat(arc4random_uniform(255))/255.0
         }
         
-        
         print("red \(randomArray[0]) green \(randomArray[1]) blue \(randomArray[2])/n")
         return UIColor(red: randomArray[0], green: randomArray[1], blue: randomArray[2], alpha: 1.0)
     }

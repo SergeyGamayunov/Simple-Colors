@@ -48,20 +48,11 @@ class ColorTableViewController: DragNDropViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("ColorCell", forIndexPath: indexPath)
-        
-        let red = CGFloat(DataBase.colors[indexPath.row].red)
-        let green = CGFloat(DataBase.colors[indexPath.row].green)
-        let blue = CGFloat(DataBase.colors[indexPath.row].blue)
-        
-        let color = UIColor(red: red, green: green, blue: blue, alpha: 1.0)
-        
-        cell.backgroundColor = color
-        cell.textLabel?.text = DataBase.colors[indexPath.row].name
+        cell.backgroundColor = DataBase.getColorAtIndex(indexPath.row).color
+        cell.textLabel?.text = DataBase.getColorAtIndex(indexPath.row).name
         cell.textLabel?.font = UIFont(name: "American Typewriter", size: 21)
-        
-        
-        // Configure the cell...
 
         return cell
     }
@@ -89,7 +80,9 @@ class ColorTableViewController: DragNDropViewController {
         }    
     }
     
-  
+    override func changeItemsAtIndexes(first: Int, second: Int) {
+        DataBase.swapColorsAtIndex(first, index2: second)
+    }
     /*
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {

@@ -13,7 +13,7 @@
 		843A8B5B1CE4EB1200CE797C /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 843A8B571CE4EB1100CE797C /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8442B5831CE5C4510027A9F6 /* ColorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8442B5821CE5C4510027A9F6 /* ColorTableViewController.swift */; };
 		84C855261CEAF9B3002FBE4B /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C855251CEAF9B3002FBE4B /* extension.swift */; };
-		84D324E61CE4F663008D2E32 /* Color-Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D324E51CE4F663008D2E32 /* Color-Name.swift */; };
+		84D324E61CE4F663008D2E32 /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D324E51CE4F663008D2E32 /* DataBase.swift */; };
 		84DDAB211CDCED05009893E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDAB201CDCED05009893E3 /* AppDelegate.swift */; };
 		84DDAB231CDCED05009893E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDAB221CDCED05009893E3 /* ViewController.swift */; };
 		84DDAB261CDCED05009893E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84DDAB241CDCED05009893E3 /* Main.storyboard */; };
@@ -44,7 +44,7 @@
 		843A8B571CE4EB1100CE797C /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		8442B5821CE5C4510027A9F6 /* ColorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTableViewController.swift; sourceTree = "<group>"; };
 		84C855251CEAF9B3002FBE4B /* extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
-		84D324E51CE4F663008D2E32 /* Color-Name.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color-Name.swift"; sourceTree = "<group>"; };
+		84D324E51CE4F663008D2E32 /* DataBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		84DDAB1D1CDCED05009893E3 /* SimpleColors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleColors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DDAB201CDCED05009893E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84DDAB221CDCED05009893E3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -85,7 +85,7 @@
 		84C855281CEAFDB4002FBE4B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				84D324E51CE4F663008D2E32 /* Color-Name.swift */,
+				84D324E51CE4F663008D2E32 /* DataBase.swift */,
 				84F3A1631CDF9C4B00C238D6 /* ColorModel.swift */,
 			);
 			name = Model;
@@ -217,7 +217,7 @@
 				84E743811CEC9EB900849222 /* ImageScrollView.swift in Sources */,
 				84EEC8DA1CEDD15A00152F07 /* DragDropTableViewController.swift in Sources */,
 				84F3A1641CDF9C4B00C238D6 /* ColorModel.swift in Sources */,
-				84D324E61CE4F663008D2E32 /* Color-Name.swift in Sources */,
+				84D324E61CE4F663008D2E32 /* DataBase.swift in Sources */,
 				84C855261CEAF9B3002FBE4B /* extension.swift in Sources */,
 				8442B5831CE5C4510027A9F6 /* ColorTableViewController.swift in Sources */,
 				84DDAB211CDCED05009893E3 /* AppDelegate.swift in Sources */,
