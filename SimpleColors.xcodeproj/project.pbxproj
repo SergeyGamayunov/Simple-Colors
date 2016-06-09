@@ -12,7 +12,7 @@
 		843A8B5A1CE4EB1200CE797C /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843A8B571CE4EB1100CE797C /* RealmSwift.framework */; };
 		843A8B5B1CE4EB1200CE797C /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 843A8B571CE4EB1100CE797C /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8442B5831CE5C4510027A9F6 /* ColorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8442B5821CE5C4510027A9F6 /* ColorTableViewController.swift */; };
-		84C855261CEAF9B3002FBE4B /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C855251CEAF9B3002FBE4B /* extension.swift */; };
+		84C855261CEAF9B3002FBE4B /* opaqueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C855251CEAF9B3002FBE4B /* opaqueView.swift */; };
 		84D324E61CE4F663008D2E32 /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D324E51CE4F663008D2E32 /* DataBase.swift */; };
 		84D3E91B1CF6FFB900E5C0D3 /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D3E91A1CF6FFB900E5C0D3 /* ColorCell.swift */; };
 		84DDAB211CDCED05009893E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDAB201CDCED05009893E3 /* AppDelegate.swift */; };
@@ -23,6 +23,11 @@
 		84E743811CEC9EB900849222 /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E743801CEC9EB800849222 /* ImageScrollView.swift */; };
 		84EEC8DA1CEDD15A00152F07 /* DragNDropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EEC8D91CEDD15A00152F07 /* DragNDropViewController.swift */; };
 		84F3A1641CDF9C4B00C238D6 /* ColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3A1631CDF9C4B00C238D6 /* ColorModel.swift */; };
+		A52BA5691D09AB4E00532F38 /* roundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52BA5681D09AB4E00532F38 /* roundedButton.swift */; };
+		A52BA56B1D09ABE500532F38 /* getRGBFromColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52BA56A1D09ABE500532F38 /* getRGBFromColor.swift */; };
+		A52BA56D1D09AC2100532F38 /* fixOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52BA56C1D09AC2100532F38 /* fixOrientation.swift */; };
+		A52BA56F1D09AC5100532F38 /* getColorOfPixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52BA56E1D09AC5100532F38 /* getColorOfPixel.swift */; };
+		A52BA5711D09AC8600532F38 /* randomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52BA5701D09AC8600532F38 /* randomColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -44,7 +49,7 @@
 		843A8B561CE4EB1100CE797C /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		843A8B571CE4EB1100CE797C /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		8442B5821CE5C4510027A9F6 /* ColorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTableViewController.swift; sourceTree = "<group>"; };
-		84C855251CEAF9B3002FBE4B /* extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
+		84C855251CEAF9B3002FBE4B /* opaqueView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = opaqueView.swift; sourceTree = "<group>"; };
 		84D324E51CE4F663008D2E32 /* DataBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		84D3E91A1CF6FFB900E5C0D3 /* ColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
 		84DDAB1D1CDCED05009893E3 /* SimpleColors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleColors.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +62,11 @@
 		84E743801CEC9EB800849222 /* ImageScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
 		84EEC8D91CEDD15A00152F07 /* DragNDropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragNDropViewController.swift; sourceTree = "<group>"; };
 		84F3A1631CDF9C4B00C238D6 /* ColorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorModel.swift; sourceTree = "<group>"; };
+		A52BA5681D09AB4E00532F38 /* roundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = roundedButton.swift; sourceTree = "<group>"; };
+		A52BA56A1D09ABE500532F38 /* getRGBFromColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getRGBFromColor.swift; sourceTree = "<group>"; };
+		A52BA56C1D09AC2100532F38 /* fixOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fixOrientation.swift; sourceTree = "<group>"; };
+		A52BA56E1D09AC5100532F38 /* getColorOfPixel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getColorOfPixel.swift; sourceTree = "<group>"; };
+		A52BA5701D09AC8600532F38 /* randomColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = randomColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +87,6 @@
 			children = (
 				84DDAB221CDCED05009893E3 /* ViewController.swift */,
 				8442B5821CE5C4510027A9F6 /* ColorTableViewController.swift */,
-				84C855251CEAF9B3002FBE4B /* extension.swift */,
 				84E743801CEC9EB800849222 /* ImageScrollView.swift */,
 				84EEC8D91CEDD15A00152F07 /* DragNDropViewController.swift */,
 				84D3E91A1CF6FFB900E5C0D3 /* ColorCell.swift */,
@@ -115,6 +124,7 @@
 		84DDAB1F1CDCED05009893E3 /* SimpleColors */ = {
 			isa = PBXGroup;
 			children = (
+				A52BA5671D09AB0500532F38 /* Utilities methods */,
 				84DDAB201CDCED05009893E3 /* AppDelegate.swift */,
 				84C855281CEAFDB4002FBE4B /* Model */,
 				84C855271CEAFDA3002FBE4B /* Controller */,
@@ -124,6 +134,19 @@
 				84DDAB2C1CDCED05009893E3 /* Info.plist */,
 			);
 			path = SimpleColors;
+			sourceTree = "<group>";
+		};
+		A52BA5671D09AB0500532F38 /* Utilities methods */ = {
+			isa = PBXGroup;
+			children = (
+				84C855251CEAF9B3002FBE4B /* opaqueView.swift */,
+				A52BA5681D09AB4E00532F38 /* roundedButton.swift */,
+				A52BA56A1D09ABE500532F38 /* getRGBFromColor.swift */,
+				A52BA56C1D09AC2100532F38 /* fixOrientation.swift */,
+				A52BA56E1D09AC5100532F38 /* getColorOfPixel.swift */,
+				A52BA5701D09AC8600532F38 /* randomColor.swift */,
+			);
+			name = "Utilities methods";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,14 +239,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A52BA56F1D09AC5100532F38 /* getColorOfPixel.swift in Sources */,
 				84DDAB231CDCED05009893E3 /* ViewController.swift in Sources */,
+				A52BA5691D09AB4E00532F38 /* roundedButton.swift in Sources */,
 				84E743811CEC9EB900849222 /* ImageScrollView.swift in Sources */,
+				A52BA56B1D09ABE500532F38 /* getRGBFromColor.swift in Sources */,
 				84D3E91B1CF6FFB900E5C0D3 /* ColorCell.swift in Sources */,
 				84EEC8DA1CEDD15A00152F07 /* DragNDropViewController.swift in Sources */,
 				84F3A1641CDF9C4B00C238D6 /* ColorModel.swift in Sources */,
+				A52BA5711D09AC8600532F38 /* randomColor.swift in Sources */,
 				84D324E61CE4F663008D2E32 /* DataBase.swift in Sources */,
-				84C855261CEAF9B3002FBE4B /* extension.swift in Sources */,
+				84C855261CEAF9B3002FBE4B /* opaqueView.swift in Sources */,
 				8442B5831CE5C4510027A9F6 /* ColorTableViewController.swift in Sources */,
+				A52BA56D1D09AC2100532F38 /* fixOrientation.swift in Sources */,
 				84DDAB211CDCED05009893E3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -113,7 +113,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func makeAndSetRandomColor() {
-        let randomColor = ColorModel.getRandomColor()
+        let randomColor = UIColor.randomColor()
         colorModel.setColorAsCurrent(randomColor)
         UIView.animateWithDuration(2) {
             self.changeBackGroundColor()
@@ -280,7 +280,8 @@ extension ViewController {
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: AnyObject]) {
         
         //get image from library
-        let imageForColor = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let imageForColorUnrotated = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let imageForColor = imageForColorUnrotated.fixOrientation()
         print("size of image is \(imageForColor.size)")
         
         //make rect for view
@@ -397,5 +398,4 @@ extension ViewController {
         scrollViewForColor.minimumZoomScale = minScaleOfScrollView
         scrollViewForColor.maximumZoomScale = 1.0
     }
-    
 }
