@@ -36,6 +36,10 @@ class ColorTableViewController: DragNDropViewController {
 
     // MARK: - Table view data source
 
+    @IBAction func infoButton(sender: UIButton) {
+        
+    }
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -49,10 +53,10 @@ class ColorTableViewController: DragNDropViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("ColorCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("ColorCell", forIndexPath: indexPath) as! ColorCell
         cell.backgroundColor = DataBase.getColorAtIndex(indexPath.row).color
-        cell.textLabel?.text = DataBase.getColorAtIndex(indexPath.row).name
-        cell.textLabel?.font = UIFont(name: "American Typewriter", size: 21)
+        cell.name.text = DataBase.getColorAtIndex(indexPath.row).name
+        //cell.textLabel!.font = UIFont(name: "American Typewriter", size: 21)
 
         return cell
     }
@@ -79,33 +83,32 @@ class ColorTableViewController: DragNDropViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let showColor = UITableViewRowAction(style: .Normal, title: "Full Screen"){_,_ in
+            let showView = UIView(frame: UIScreen.mainScreen().bounds)
+            showView.backgroundColor = tableView.cellForRowAtIndexPath(indexPath)?.backgroundColor
+            tableView.addSubview(showView)
+            
+            let tap = UITapGestureRecognizer(target: self, action: #selector(ColorTableViewController.dismissShowView))
+            tableView.addGestureRecognizer(tap)
+            //DataBase.objects[0].list[indexPath.row].
+        }
+        let delete = UITableViewRowAction(style: .Default, title: "Delete") { (_,_) in
+            DataBase.removeColorAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        }
+        let components = UITableViewRowAction(style: .Default, title: "RGB") { (_, _) in}
+        components.backgroundColor = UIColor.whiteColor()
+        return [delete, showColor]
+    }
+    
+    func dismissShowView() {
+        tableView.subviews.last?.removeFromSuperview()
+    }
     
     override func changeItemsAtIndexes(first: Int, second: Int) {
         DataBase.swapColorsAtIndex(first, index2: second)
     }
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+  
+   
 }

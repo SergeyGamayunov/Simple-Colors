@@ -23,10 +23,8 @@ class DataBase {
     static var objects: Results<ColorList> = { realm.objects(ColorList) }()
     static var numberOfColors: Int {
         if objects.count > 0 {
-            print("1")
             return objects[0].list.count
         } else {
-            print("2")
             return 0
         }
     }
@@ -55,6 +53,7 @@ class DataBase {
     }
     
     class func getColorAtIndex(index: Int) -> (color: UIColor, name: String) {
+        
         let red = objects[0].list[index].red
         let green = objects[0].list[index].green
         let blue = objects[0].list[index].blue

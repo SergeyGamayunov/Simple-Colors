@@ -119,7 +119,7 @@ class DragNDropViewController: UITableViewController {
         let image = UIGraphicsGetImageFromCurrentImageContext() as UIImage
         UIGraphicsEndImageContext()
         
-        let cellSnapshot : UIView = UIImageView(image: image)
+        let cellSnapshot: UIView = UIImageView(image: image)
         cellSnapshot.layer.masksToBounds = false
         cellSnapshot.layer.cornerRadius = 0.0
         cellSnapshot.layer.shadowOffset = CGSizeMake(-5.0, 0.0)
@@ -129,7 +129,7 @@ class DragNDropViewController: UITableViewController {
     }
     
     func changeItemsAtIndexes(first: Int, second: Int) {
-        //here change draggable(second) with goal cell(first)
+        //override it! here change draggable(second) with goal cell(first)
     }
     
     // MARK: - Table view data source

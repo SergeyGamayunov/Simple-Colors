@@ -45,7 +45,7 @@ class ColorModel {
             randomArray[i] = CGFloat(arc4random_uniform(255))/255.0
         }
         
-        print("red \(randomArray[0]) green \(randomArray[1]) blue \(randomArray[2])/n")
+        print("Random color is red \(randomArray[0]) green \(randomArray[1]) blue \(randomArray[2])")
         return UIColor(red: randomArray[0], green: randomArray[1], blue: randomArray[2], alpha: 1.0)
     }
     
@@ -65,6 +65,9 @@ enum Colors: Int {
 extension UIImage {
     subscript (x: Int, y: Int) -> UIColor? {
         
+        print("Subscript extension. X is \(x), Y is \(y)")
+        print("Subscript extension. Width is \(self.size.width), Height is \(self.size.height)")
+        
         if x < 0 || x > Int(size.width) || y < 0 || y > Int(size.height) {
             return nil
         }
@@ -74,14 +77,16 @@ extension UIImage {
         let data = CFDataGetBytePtr(providerData)
         
         let numberOfComponents = 4
+        
         let pixelData = ((Int(size.width) * y) + x) * numberOfComponents
         
         let r = CGFloat(data[pixelData]) / 255.0
         let g = CGFloat(data[pixelData + 1]) / 255.0
         let b = CGFloat(data[pixelData + 2]) / 255.0
         let a = CGFloat(data[pixelData + 3]) / 255.0
-        
-        return UIColor(red: r, green: g, blue: b, alpha: a)
+        let color = UIColor(red: r, green: g, blue: b, alpha: a)
+        print("UIImage extension. returning color is \(color)")
+        return color
     }
 }
 //get components of color
