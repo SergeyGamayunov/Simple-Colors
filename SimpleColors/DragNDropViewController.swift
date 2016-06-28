@@ -56,7 +56,7 @@ class DragNDropViewController: UITableViewController {
                     My.cellIsAnimating = true
                     My.cellSnapshot!.center = center
                     My.cellSnapshot!.transform = CGAffineTransformMakeScale(1.05, 1.05)
-                    My.cellSnapshot!.alpha = 0.98
+                    My.cellSnapshot!.alpha = 0.8
                     cell.alpha = 0.0
                     }, completion: { (finished) -> Void in
                         if finished {
@@ -131,7 +131,6 @@ class DragNDropViewController: UITableViewController {
     func changeItemsAtIndexes(first: Int, second: Int) {
         //override it! here change draggable(second) with goal cell(first)
     }
-    
-    // MARK: - Table view data source
+ 
     
 }

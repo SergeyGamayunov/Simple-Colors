@@ -70,6 +70,12 @@ class DataBase {
         })
     }
     
+    class func changeColorNameAtIndex(index: Int, name: String) {
+        try! realm.write {
+            objects[0].list[index].name = name
+        }
+    }
+    
     class func swapColorsAtIndex(index1: Int, index2: Int) {
         try! realm.write({ 
             objects[0].list.swap(index1, index2)
@@ -83,6 +89,8 @@ class DataBase {
         })
     }
 }
+
+//MARK: - Database classes
 
 class Color: Object {
     

@@ -8,16 +8,13 @@
 
 import UIKit
 
-
-
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
+class ViewController: UIViewController, UINavigationControllerDelegate, UIScrollViewDelegate {
     
     var colorModel = ColorModel(color: UIColor.whiteColor())
     
     //MARK: - Programmatically views
-    var scrollViewForColor = UIScrollView()
+    var scrollViewForColor = ImageScrollView()
     var minScaleOfScrollView: CGFloat = 0.0
-    var zoomSlider = UISlider()
     var imageViewForColor = UIImageView()
     var viewForSampleColor = UIButton()
     let imagePicker = UIImagePickerController()
@@ -33,6 +30,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     var isSampleColorViewAppeared: Bool = false
+    var isBGColorBright: Bool {
+        return (view.backgroundColor?.isBright)!
+    }
     
 //MARK: - Outlets
     
@@ -47,29 +47,53 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var greenView: UIView!
     @IBOutlet weak var blueView: UIView!
     
+    @IBOutlet var changeValueButtonsArray: [UIButton]!
     
     @IBOutlet weak var writeButtonOutlet: UIButton!
     @IBOutlet weak var libraryButtonOutlet: UIButton!
     @IBOutlet weak var randomButtonOutlet: UIButton!
     @IBOutlet weak var cameraButtonOutlet: UIButton!
     @IBOutlet weak var photoButtonOutlet: UIButton!
+    @IBOutlet var buttonOutlets: [UIButton]!
     
 //MARK: - View Did Load!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupButtons()
+        
         imagePicker.delegate = self
         scrollViewForColor.delegate = self
+        navigationController?.setNavigationBarHidden(true, animated: false)
         
         print("Main object is \(DataBase.objects)")
         print("Number of Colors is \(DataBase.numberOfColors)")
-    
-        makeRoundedView()
-        makeAndSetRandomColor()
         
+        makeAndSetRandomColor(0.0)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(returnedFromLibraryTableViewWithNotificationUserInfo), name: "SecVCPopped", object: nil)
     }
     
+    func returnedFromLibraryTableViewWithNotificationUserInfo(notification: NSNotification) {
+        let userInfo = notification.userInfo as! [String: UIColor]
+        let color = userInfo["color"]!
+        
+        if isScrollViewAppeared {
+            scrollViewForColor.removeFromSuperview()
+            view.removeOpaqueView()
+        }
+        colorModel.setColorAsCurrent(color)
+        UIView.animateWithDuration(2) {
+            self.changeBackGroundColor()
+            self.changeSlidersAndLabels()
+        }
+        invertTextColor()
+    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         updateMinZoomScaleForSize(scrollViewForColor.bounds.size)
@@ -87,38 +111,53 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
-    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
-        
-        let scale = newWidth / image.size.width
-        let newHeight = image.size.height * scale
-        UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight))
-        image.drawInRect(CGRectMake(0, 0, newWidth, newHeight))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return newImage
-    }
-    
-    func makeRoundedView() {
-        let buttons = [
-            writeButtonOutlet,
-            libraryButtonOutlet,
-            randomButtonOutlet,
-            cameraButtonOutlet,
-            photoButtonOutlet
-        ]
-        for button in buttons {
-            button.makeRoundedButton()
+    func setupButtons() {
+        for button in buttonOutlets {
+            let image = button.imageView?.image?.imageWithRenderingMode(.AlwaysTemplate)
+            button.setImage(image, forState: .Normal)
         }
+        
+        redSlider.setThumbImage(UIImage(named: "RedThumb"), forState: .Normal)
+        greenSlider.setThumbImage(UIImage(named: "GreenThumb"), forState: .Normal)
+        blueSlider.setThumbImage(UIImage(named: "BlueThumb"), forState: .Normal)
+
+        writeButtonOutlet.makeRoundedButton()
     }
     
-    func makeAndSetRandomColor() {
+    func makeAndSetRandomColor(withDuration: Double) {
+        
+        redSlider.minimumTrackTintColor = UIColor.redColor()
+        
         let randomColor = UIColor.randomColor()
         colorModel.setColorAsCurrent(randomColor)
-        UIView.animateWithDuration(2) {
+        UIView.animateWithDuration(withDuration) {
             self.changeBackGroundColor()
             self.changeSlidersAndLabels()
+            self.invertTextColor()
         }
+        
+        
+        
+    }
+    
+    func invertTextColor() {
+        
+        let invertColor = colorModel.color.contrastColor()
+        let labels = [redLabel, greenLabel, blueLabel]
+        
+        for label in labels {
+            label.textColor = invertColor
+        }
+        
+        for button in changeValueButtonsArray {
+            button.setTitleColor(invertColor, forState: .Normal)
+        }
+        
+        for button in buttonOutlets {
+            button.tintColor = invertColor
+        }
+        
+        writeButtonOutlet.backgroundColor = invertColor.contrastColor()
     }
     
     func changeBackGroundColor() {
@@ -159,26 +198,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         colorModel.setColorAsCurrent(colorFromSlider)
         changeBackGroundColor()
         changeSlidersAndLabels()
+        invertTextColor()
+        
     }
     
     @IBAction func plusButton(sender: UIButton) {
         
-//        func stepOneSlider(function: inout Float -> Float) {
-//            
-//        }
-//        
-//        if sender.tag == 1 {
-//            stepOneSlider(){$0++}
-//        } else {
-//            stepOneSlider(){$0--}
-//        }
-//        
         guard let color: Colors = Colors(rawValue: sender.tag) else {return}
         switch color {
         case .Red:
             let oldValue = Int(redSlider.value)
             let newValue = oldValue + 1
             redSlider.setValue(Float(newValue), animated: true)
+            invertTextColor()
             slidersTouched(redSlider)
         case .Green:
             let oldValue = Int(greenSlider.value)
@@ -191,6 +223,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             blueSlider.setValue(Float(newValue), animated: true)
             slidersTouched(blueSlider)
         }
+        invertTextColor()
     }
     
     @IBAction func minusButton(sender: UIButton) {
@@ -217,7 +250,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //MARK: - Buttons
 
     @IBAction func randomColorButton(sender: UIButton) {
-        makeAndSetRandomColor()
+        makeAndSetRandomColor(1.4)
     }
     
     @IBAction func photoButton(sender: UIButton) {
@@ -235,10 +268,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
  
     @IBAction func addToDataBaseButton(sender: UIButton) {
-        if !isSampleColorViewAppeared {
+        if !isSampleColorViewAppeared { //adding from picture
             addToDataBase(colorModel.color)
         } else {
-            addToDataBase(viewForSampleColor.backgroundColor!)
+            addToDataBase(viewForSampleColor.backgroundColor!) //adding current color
             viewForSampleColor.removeFromSuperview()
         }
     }
@@ -275,7 +308,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 }
 
 //MARK: - UIImagePickerControllerDelegate Protocol Functions
-extension ViewController {
+extension ViewController: UIImagePickerControllerDelegate {
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: AnyObject]) {
         
@@ -312,7 +345,6 @@ extension ViewController {
         imageViewForColor.layer.masksToBounds = false;
         imageViewForColor.clipsToBounds = true;
         
-        
         scrollViewForColor.frame = frameForScrollView
         scrollViewForColor.center = view.center
         scrollViewForColor.bounces = false
@@ -323,8 +355,6 @@ extension ViewController {
         scrollViewForColor.zoomScale = minScaleOfScrollView
         view.addOpaqueView(0.7, color: UIColor.blackColor())
         view.addSubview(scrollViewForColor)
-        
-
         
         isScrollViewAppeared = true
         
@@ -370,7 +400,6 @@ extension ViewController {
             print(" Place of touch is \(touchPlace) and is Inside \(isInside)")
             if !isInside {
                 scrollViewForColor.removeFromSuperview()
-                zoomSlider.removeFromSuperview()
                 view.removeOpaqueView()
                 isScrollViewAppeared = false
             }
@@ -381,6 +410,12 @@ extension ViewController {
                 isSampleColorViewAppeared = false
                 scrollViewForColor.userInteractionEnabled = true
             }
+        }
+    }
+    
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
+        if motion == .MotionShake {
+            makeAndSetRandomColor(1.4)
         }
     }
 }
@@ -396,6 +431,6 @@ extension ViewController {
         minScaleOfScrollView = min(widthScale, heightScale)
         
         scrollViewForColor.minimumZoomScale = minScaleOfScrollView
-        scrollViewForColor.maximumZoomScale = 1.0
+        scrollViewForColor.maximumZoomScale = 30.0
     }
 }

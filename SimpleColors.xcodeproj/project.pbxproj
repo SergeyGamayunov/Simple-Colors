@@ -7,12 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		843A8B581CE4EB1100CE797C /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843A8B561CE4EB1100CE797C /* Realm.framework */; };
-		843A8B591CE4EB1100CE797C /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 843A8B561CE4EB1100CE797C /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		843A8B5A1CE4EB1200CE797C /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843A8B571CE4EB1100CE797C /* RealmSwift.framework */; };
-		843A8B5B1CE4EB1200CE797C /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 843A8B571CE4EB1100CE797C /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8442B5831CE5C4510027A9F6 /* ColorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8442B5821CE5C4510027A9F6 /* ColorTableViewController.swift */; };
-		84C855261CEAF9B3002FBE4B /* opaqueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C855251CEAF9B3002FBE4B /* opaqueView.swift */; };
+		84C855261CEAF9B3002FBE4B /* UIView+addOpaqueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C855251CEAF9B3002FBE4B /* UIView+addOpaqueView.swift */; };
 		84D324E61CE4F663008D2E32 /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D324E51CE4F663008D2E32 /* DataBase.swift */; };
 		84D3E91B1CF6FFB900E5C0D3 /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D3E91A1CF6FFB900E5C0D3 /* ColorCell.swift */; };
 		84DDAB211CDCED05009893E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDAB201CDCED05009893E3 /* AppDelegate.swift */; };
@@ -23,11 +19,12 @@
 		84E743811CEC9EB900849222 /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E743801CEC9EB800849222 /* ImageScrollView.swift */; };
 		84EEC8DA1CEDD15A00152F07 /* DragNDropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EEC8D91CEDD15A00152F07 /* DragNDropViewController.swift */; };
 		84F3A1641CDF9C4B00C238D6 /* ColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3A1631CDF9C4B00C238D6 /* ColorModel.swift */; };
-		A52BA5691D09AB4E00532F38 /* roundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52BA5681D09AB4E00532F38 /* roundedButton.swift */; };
-		A52BA56B1D09ABE500532F38 /* getRGBFromColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52BA56A1D09ABE500532F38 /* getRGBFromColor.swift */; };
-		A52BA56D1D09AC2100532F38 /* fixOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52BA56C1D09AC2100532F38 /* fixOrientation.swift */; };
-		A52BA56F1D09AC5100532F38 /* getColorOfPixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52BA56E1D09AC5100532F38 /* getColorOfPixel.swift */; };
+		A52BA5691D09AB4E00532F38 /* UIButton+makeRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52BA5681D09AB4E00532F38 /* UIButton+makeRoundedButton.swift */; };
+		A52BA56B1D09ABE500532F38 /* UIColor+components.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52BA56A1D09ABE500532F38 /* UIColor+components.swift */; };
+		A52BA56D1D09AC2100532F38 /* UIImage+fixOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52BA56C1D09AC2100532F38 /* UIImage+fixOrientation.swift */; };
+		A52BA56F1D09AC5100532F38 /* UIImage+getColorOfPixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52BA56E1D09AC5100532F38 /* UIImage+getColorOfPixel.swift */; };
 		A52BA5711D09AC8600532F38 /* randomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52BA5701D09AC8600532F38 /* randomColor.swift */; };
+		ACACD672B566A3A858AD3C31 /* Pods_SimpleColors.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D5779B9E57B558C2A381A56 /* Pods_SimpleColors.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,8 +34,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				843A8B5B1CE4EB1200CE797C /* RealmSwift.framework in Embed Frameworks */,
-				843A8B591CE4EB1100CE797C /* Realm.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -46,10 +41,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		843A8B561CE4EB1100CE797C /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
-		843A8B571CE4EB1100CE797C /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
+		1D5779B9E57B558C2A381A56 /* Pods_SimpleColors.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleColors.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8442B5821CE5C4510027A9F6 /* ColorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTableViewController.swift; sourceTree = "<group>"; };
-		84C855251CEAF9B3002FBE4B /* opaqueView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = opaqueView.swift; sourceTree = "<group>"; };
+		84C855251CEAF9B3002FBE4B /* UIView+addOpaqueView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+addOpaqueView.swift"; sourceTree = "<group>"; };
 		84D324E51CE4F663008D2E32 /* DataBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		84D3E91A1CF6FFB900E5C0D3 /* ColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
 		84DDAB1D1CDCED05009893E3 /* SimpleColors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleColors.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,11 +56,13 @@
 		84E743801CEC9EB800849222 /* ImageScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
 		84EEC8D91CEDD15A00152F07 /* DragNDropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragNDropViewController.swift; sourceTree = "<group>"; };
 		84F3A1631CDF9C4B00C238D6 /* ColorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorModel.swift; sourceTree = "<group>"; };
-		A52BA5681D09AB4E00532F38 /* roundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = roundedButton.swift; sourceTree = "<group>"; };
-		A52BA56A1D09ABE500532F38 /* getRGBFromColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getRGBFromColor.swift; sourceTree = "<group>"; };
-		A52BA56C1D09AC2100532F38 /* fixOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fixOrientation.swift; sourceTree = "<group>"; };
-		A52BA56E1D09AC5100532F38 /* getColorOfPixel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getColorOfPixel.swift; sourceTree = "<group>"; };
+		A52BA5681D09AB4E00532F38 /* UIButton+makeRoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+makeRoundedButton.swift"; sourceTree = "<group>"; };
+		A52BA56A1D09ABE500532F38 /* UIColor+components.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+components.swift"; sourceTree = "<group>"; };
+		A52BA56C1D09AC2100532F38 /* UIImage+fixOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+fixOrientation.swift"; sourceTree = "<group>"; };
+		A52BA56E1D09AC5100532F38 /* UIImage+getColorOfPixel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+getColorOfPixel.swift"; sourceTree = "<group>"; };
 		A52BA5701D09AC8600532F38 /* randomColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = randomColor.swift; sourceTree = "<group>"; };
+		AB3A88748AD4847EBA3D1017 /* Pods-SimpleColors.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleColors.release.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleColors/Pods-SimpleColors.release.xcconfig"; sourceTree = "<group>"; };
+		D1F265CFB61062F5A01F0D3B /* Pods-SimpleColors.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleColors.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleColors/Pods-SimpleColors.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,14 +70,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				843A8B5A1CE4EB1200CE797C /* RealmSwift.framework in Frameworks */,
-				843A8B581CE4EB1100CE797C /* Realm.framework in Frameworks */,
+				ACACD672B566A3A858AD3C31 /* Pods_SimpleColors.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		390703155F361A0660E82E32 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D1F265CFB61062F5A01F0D3B /* Pods-SimpleColors.debug.xcconfig */,
+				AB3A88748AD4847EBA3D1017 /* Pods-SimpleColors.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		39EAED8C76219FEECB61D59C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1D5779B9E57B558C2A381A56 /* Pods_SimpleColors.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		84C855271CEAFDA3002FBE4B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,10 +118,10 @@
 		84DDAB141CDCED05009893E3 = {
 			isa = PBXGroup;
 			children = (
-				843A8B561CE4EB1100CE797C /* Realm.framework */,
-				843A8B571CE4EB1100CE797C /* RealmSwift.framework */,
 				84DDAB1F1CDCED05009893E3 /* SimpleColors */,
 				84DDAB1E1CDCED05009893E3 /* Products */,
+				390703155F361A0660E82E32 /* Pods */,
+				39EAED8C76219FEECB61D59C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -124,8 +136,8 @@
 		84DDAB1F1CDCED05009893E3 /* SimpleColors */ = {
 			isa = PBXGroup;
 			children = (
-				A52BA5671D09AB0500532F38 /* Utilities methods */,
 				84DDAB201CDCED05009893E3 /* AppDelegate.swift */,
+				A52BA5671D09AB0500532F38 /* Utilities methods */,
 				84C855281CEAFDB4002FBE4B /* Model */,
 				84C855271CEAFDA3002FBE4B /* Controller */,
 				84DDAB241CDCED05009893E3 /* Main.storyboard */,
@@ -139,11 +151,11 @@
 		A52BA5671D09AB0500532F38 /* Utilities methods */ = {
 			isa = PBXGroup;
 			children = (
-				84C855251CEAF9B3002FBE4B /* opaqueView.swift */,
-				A52BA5681D09AB4E00532F38 /* roundedButton.swift */,
-				A52BA56A1D09ABE500532F38 /* getRGBFromColor.swift */,
-				A52BA56C1D09AC2100532F38 /* fixOrientation.swift */,
-				A52BA56E1D09AC5100532F38 /* getColorOfPixel.swift */,
+				84C855251CEAF9B3002FBE4B /* UIView+addOpaqueView.swift */,
+				A52BA5681D09AB4E00532F38 /* UIButton+makeRoundedButton.swift */,
+				A52BA56A1D09ABE500532F38 /* UIColor+components.swift */,
+				A52BA56C1D09AC2100532F38 /* UIImage+fixOrientation.swift */,
+				A52BA56E1D09AC5100532F38 /* UIImage+getColorOfPixel.swift */,
 				A52BA5701D09AC8600532F38 /* randomColor.swift */,
 			);
 			name = "Utilities methods";
@@ -156,11 +168,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84DDAB2F1CDCED05009893E3 /* Build configuration list for PBXNativeTarget "SimpleColors" */;
 			buildPhases = (
+				9055C6FE11CB198109D53025 /* [CP] Check Pods Manifest.lock */,
 				84DDAB191CDCED05009893E3 /* Sources */,
 				84DDAB1A1CDCED05009893E3 /* Frameworks */,
 				84DDAB1B1CDCED05009893E3 /* Resources */,
 				843A8B5C1CE4EB1200CE797C /* Embed Frameworks */,
-				843A8B5D1CE4EB6500CE797C /* ShellScript */,
+				40E1876D71521FFDD6DE70B1 /* [CP] Embed Pods Frameworks */,
+				D95E92F7843117E75E38C060 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -219,18 +233,50 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		843A8B5D1CE4EB6500CE797C /* ShellScript */ = {
+		40E1876D71521FFDD6DE70B1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SimpleColors/Pods-SimpleColors-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9055C6FE11CB198109D53025 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D95E92F7843117E75E38C060 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SimpleColors/Pods-SimpleColors-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -239,19 +285,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A52BA56F1D09AC5100532F38 /* getColorOfPixel.swift in Sources */,
+				A52BA56F1D09AC5100532F38 /* UIImage+getColorOfPixel.swift in Sources */,
 				84DDAB231CDCED05009893E3 /* ViewController.swift in Sources */,
-				A52BA5691D09AB4E00532F38 /* roundedButton.swift in Sources */,
+				A52BA5691D09AB4E00532F38 /* UIButton+makeRoundedButton.swift in Sources */,
 				84E743811CEC9EB900849222 /* ImageScrollView.swift in Sources */,
-				A52BA56B1D09ABE500532F38 /* getRGBFromColor.swift in Sources */,
+				A52BA56B1D09ABE500532F38 /* UIColor+components.swift in Sources */,
 				84D3E91B1CF6FFB900E5C0D3 /* ColorCell.swift in Sources */,
 				84EEC8DA1CEDD15A00152F07 /* DragNDropViewController.swift in Sources */,
 				84F3A1641CDF9C4B00C238D6 /* ColorModel.swift in Sources */,
 				A52BA5711D09AC8600532F38 /* randomColor.swift in Sources */,
 				84D324E61CE4F663008D2E32 /* DataBase.swift in Sources */,
-				84C855261CEAF9B3002FBE4B /* opaqueView.swift in Sources */,
+				84C855261CEAF9B3002FBE4B /* UIView+addOpaqueView.swift in Sources */,
 				8442B5831CE5C4510027A9F6 /* ColorTableViewController.swift in Sources */,
-				A52BA56D1D09AC2100532F38 /* fixOrientation.swift in Sources */,
+				A52BA56D1D09AC2100532F38 /* UIImage+fixOrientation.swift in Sources */,
 				84DDAB211CDCED05009893E3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,6 +407,7 @@
 		};
 		84DDAB301CDCED05009893E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1F265CFB61062F5A01F0D3B /* Pods-SimpleColors.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -380,6 +427,7 @@
 		};
 		84DDAB311CDCED05009893E3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB3A88748AD4847EBA3D1017 /* Pods-SimpleColors.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
