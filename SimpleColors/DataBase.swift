@@ -11,10 +11,22 @@ import RealmSwift
 import UIKit
 
 /*
- Database Class. There are three properties:
- 1. realm as itself
- 2. array of objects that ALWAYS contains only one object - list of Colors
- 3/ number of colors in list. (checking list existing)
+    Database Class. There are three properties:
+		1. realm as itself
+		2. array of objects that ALWAYS contains only one object - list of Colors
+		3. number of colors in list. (checking list existing)
+	All methods are class functions, all properties are static. 
+	Don't create DataBase instance.
+
+	Database model is totally extentable - it's possible to add profiles
+	with personal color list. Now DB contains 1 object - instance of ColorList, 
+	that list contains instances of Color class.
+
+	Database - class
+	Database.objects - array of objects <ColorList>
+	Database.objects[0] - ColorList (the only one)
+	Database.objects[0].list - array of Colors
+	Database.objects[0].list[index] - color at index
  */
 
 class DataBase {
@@ -25,38 +37,37 @@ class DataBase {
         if objects.count > 0 {
             return objects[0].list.count
         } else {
-            return 0
+            return 0 //if DB is still empry, return 0.
         }
     }
     
     class func addColorToDataBase(color: UIColor, name: String) {
         
-        let red = color.components[0]
+        let red   = color.components[0]
         let green = color.components[1]
-        let blue = color.components[2]
+        let blue  = color.components[2]
         let colorForDB = Color(red: red, green: green, blue: blue, name: name)
         
-        //if DB is empty:
+        //if DB is empty(either no objects in DB, or there one empty list):
         if numberOfColors == 0 {
             deleteAll() //in case there are still empty list (after deleting all colors)
             let newColorList = ColorList()
             newColorList.list.insert(colorForDB, atIndex: 0)
-            try! realm.write({
+            try! realm.write {
                 realm.add(newColorList)
                 print("Successfully created new list!")
-            })
+            }
         } else {
-            try! realm.write({
+            try! realm.write {
                 objects[0].list.insert(colorForDB, atIndex: 0)
-            })
+            }
         }
     }
     
     class func getColorAtIndex(index: Int) -> (color: UIColor, name: String) {
-        
-        let red = objects[0].list[index].red
+        let red   = objects[0].list[index].red
         let green = objects[0].list[index].green
-        let blue = objects[0].list[index].blue
+        let blue  = objects[0].list[index].blue
         let color = UIColor(red: red, green: green, blue: blue, alpha: 1.0)
         
         let name = objects[0].list[index].name

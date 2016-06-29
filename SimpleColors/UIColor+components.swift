@@ -13,7 +13,7 @@ import UIKit
 extension UIColor {
     var components: [CGFloat] {
         var r: CGFloat = 0
-        var g: CGFloat = 0
+        var g: CGFloat = 0					
         var b: CGFloat = 0
         var a: CGFloat = 0
         getRed (&r, green: &g, blue: &b, alpha: &a)
@@ -76,9 +76,7 @@ extension UIColor {
                 blue += contr
             }
             return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
-            
-            
-            
+			
         } else {
             var red = min(components[0] + const, 1.0)
             var green = min(components[1] + const, 1.0)

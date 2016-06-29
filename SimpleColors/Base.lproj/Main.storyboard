@@ -53,10 +53,10 @@
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="plusButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y9d-Vi-MMp"/>
+                                                    <action selector="stepForSliderButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mHQ-15-mKx"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60S-az-eNC">
+                                            <button opaque="NO" tag="-1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60S-az-eNC">
                                                 <rect key="frame" x="35" y="62" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="Y1j-xC-EBG"/>
@@ -68,11 +68,10 @@
                                                     <color key="titleShadowColor" white="0.6306054178161099" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="minusButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ggf-np-9j3"/>
+                                                    <action selector="stepForSliderButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XW4-Aw-LU2"/>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="60S-az-eNC" secondAttribute="bottom" constant="8" id="1k9-ee-NQs"/>
                                             <constraint firstAttribute="bottom" secondItem="XWB-Ag-7zs" secondAttribute="bottom" constant="8" id="G1u-I3-8JA"/>
@@ -96,7 +95,7 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CDx-PZ-D5f">
+                                            <button opaque="NO" tag="-2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CDx-PZ-D5f">
                                                 <rect key="frame" x="35" y="62" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="bpm-cC-pJm"/>
@@ -107,7 +106,7 @@
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="minusButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SsA-6b-mRO"/>
+                                                    <action selector="stepForSliderButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YQC-xB-N6t"/>
                                                 </connections>
                                             </button>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="128" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="gC9-Wu-TiJ">
@@ -132,11 +131,10 @@
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="plusButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dsl-MV-epj"/>
+                                                    <action selector="stepForSliderButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0sj-Qb-JRt"/>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="CDx-PZ-D5f" firstAttribute="leading" secondItem="M3H-KX-1dL" secondAttribute="leading" constant="35" id="4gN-Ci-iuc"/>
                                             <constraint firstAttribute="bottom" secondItem="hXh-iw-p8q" secondAttribute="bottom" constant="8" id="4mi-RC-60a"/>
@@ -182,10 +180,10 @@
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="plusButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="clz-GN-hMd"/>
+                                                    <action selector="stepForSliderButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="quX-Si-3c2"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tdz-Am-VFA">
+                                            <button opaque="NO" tag="-3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tdz-Am-VFA">
                                                 <rect key="frame" x="35" y="62" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="JX6-m5-qxy"/>
@@ -196,11 +194,10 @@
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="minusButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x3r-kL-LgT"/>
+                                                    <action selector="stepForSliderButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vZ0-Jg-ZLi"/>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="QrY-YI-xeZ" secondAttribute="trailing" constant="35" id="2vO-aL-6oQ"/>
                                             <constraint firstAttribute="bottom" secondItem="QrY-YI-xeZ" secondAttribute="bottom" constant="8" id="7Od-u0-ThE"/>
@@ -286,7 +283,6 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="wTP-Vv-7FR" firstAttribute="top" secondItem="1w6-Mx-fBA" secondAttribute="bottom" constant="20" id="D50-Bo-XUO"/>
                                             <constraint firstAttribute="trailing" secondItem="wTP-Vv-7FR" secondAttribute="trailing" constant="35" id="DO1-3X-QtO"/>
@@ -340,6 +336,9 @@
                         <outletCollection property="buttonOutlets" destination="WTW-nu-L2Q" collectionClass="NSMutableArray" id="XvP-Wc-BQd"/>
                         <outletCollection property="buttonOutlets" destination="cbO-VW-suL" collectionClass="NSMutableArray" id="V0l-IN-mQh"/>
                         <outletCollection property="buttonOutlets" destination="OK7-IV-p8c" collectionClass="NSMutableArray" id="qzL-wW-7ox"/>
+                        <outletCollection property="labelOutlets" destination="WCd-fI-ggd" collectionClass="NSMutableArray" id="EnV-U7-9MS"/>
+                        <outletCollection property="labelOutlets" destination="hXh-iw-p8q" collectionClass="NSMutableArray" id="L0z-NH-h9v"/>
+                        <outletCollection property="labelOutlets" destination="qAh-ed-gVc" collectionClass="NSMutableArray" id="DAg-lj-73q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -371,7 +370,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BmN-af-bSd">
                                                             <rect key="frame" x="0.0" y="0.0" width="13" height="16"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="255" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISo-hw-WoQ">
@@ -388,7 +387,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="G:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4M-Y5-yHS">
                                                             <rect key="frame" x="0.0" y="0.0" width="14" height="16"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="255" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xgb-4D-J2W">
@@ -405,7 +404,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zYU-DE-0xX">
                                                             <rect key="frame" x="0.0" y="0.0" width="13" height="16"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="255" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bew-41-ec8">
@@ -435,13 +434,13 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HEX:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eop-KZ-1c6">
                                                             <rect key="frame" x="0.0" y="0.0" width="31" height="16"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FFFFFF" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oDa-Lx-Okk">
                                                             <rect key="frame" x="39" y="0.0" width="41" height="16"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="13"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>

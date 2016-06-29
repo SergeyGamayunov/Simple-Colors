@@ -10,7 +10,9 @@ import Foundation
 import UIKit
 import RealmSwift
 
-
+/*
+	Class for UI. There are current color, components
+*/
 
 class ColorModel {
     var color: UIColor

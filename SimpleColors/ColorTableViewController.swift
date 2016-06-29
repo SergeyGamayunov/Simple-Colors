@@ -23,99 +23,85 @@ class ColorTableViewController: DragNDropViewController {
         print("height of cell is \(self.tableView.rowHeight)")
         self.tableView.allowsMultipleSelection = false
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+	}
+	
     // MARK: - Table view data source
-
-    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return DataBase.numberOfColors
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+		
         //get reusable cell
         let cell = tableView.dequeueReusableCellWithIdentifier("ColorCell", forIndexPath: indexPath) as! ColorCell
-        
-        cell.ColorNameButton.titleLabel?.textAlignment = .Left
-        
-        //fetch color from DB
+		
+        //fetch data from DB
         let color = DataBase.getColorAtIndex(indexPath.row).color
+		
+		//set data
         cell.backgroundColor = color
+        cell.colorNameButton.setTitle(DataBase.getColorAtIndex(indexPath.row).name, forState: .Normal)
+        cell.HEXLabel.text = color.hexComponents[0] +
+							 color.hexComponents[1] +
+							 color.hexComponents[2]
         
-        //fetch text from DB
-        cell.ColorNameButton.setTitle(DataBase.getColorAtIndex(indexPath.row).name, forState: .Normal)
-        cell.HEXLabel.text = color.hexComponents[0]+color.hexComponents[1]+color.hexComponents[2]
-        
-        cell.redLabel.text = "\(color.intComponents[0])"
+        cell.redLabel.text   = "\(color.intComponents[0])"
         cell.greenLabel.text = "\(color.intComponents[1])"
-        cell.blueLabel.text = "\(color.intComponents[2])"
+        cell.blueLabel.text  = "\(color.intComponents[2])"
         
         for label in cell.cellLabels {
             label.textColor = color.contrastColor()
         }
-        cell.ColorNameButton.setTitleColor(color.contrastColor(), forState: .Normal)
-        
+		
+		//setup cell
+		cell.colorNameButton.titleLabel?.textAlignment = .Left
+		cell.colorNameButton.setTitleColor(color.contrastColor(), forState: .Normal)
+		
         return cell
     }
-    
-    func changeColorName() {
-        print("test change color name")
-    }
 
-    // Override to support conditional editing of the table view.
+	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		//created dictionary with info we want to passed back to root view
+		let color = DataBase.getColorAtIndex(indexPath.row).color
+		let userInfo = ["color": color]
+		//posted notiications
+		NSNotificationCenter.defaultCenter().postNotificationName("SecVCPopped", object: self, userInfo: userInfo)
+		navigationController?.setNavigationBarHidden(true, animated: true)
+		navigationController?.popToRootViewControllerAnimated(true)
+		
+	}
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
         return true
     }
   
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         
-        let showColor = UITableViewRowAction(style: .Normal, title: "Full Screen") { (_,_) in
+        let showColor = UITableViewRowAction(style: .Normal, title: "Full Screen") { _,_ in
             self.presentShowView(indexPath)
             tableView.setEditing(false, animated: true)
         }
         
-        let delete = UITableViewRowAction(style: .Destructive, title: "Delete") { (_,_) in
+        let delete = UITableViewRowAction(style: .Destructive, title: "Delete") { _,_ in
             DataBase.removeColorAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
         
         return [delete, showColor]
     }
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //created dictionary with info we want to passed back to root view
-        let color = DataBase.getColorAtIndex(indexPath.row).color
-        let userInfo = ["color": color]
-        //posted notiications
-        NSNotificationCenter.defaultCenter().postNotificationName("SecVCPopped", object: self, userInfo: userInfo)
-        navigationController?.setNavigationBarHidden(true, animated: true)
-        navigationController?.popToRootViewControllerAnimated(true)
-        
-    }
-    
+	
     func presentShowView(indexPath: NSIndexPath) {
         
         let color = tableView.cellForRowAtIndexPath(indexPath)?.backgroundColor!
-        
-        //UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: .Fade)
+		
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.prefersStatusBarHidden()
         
@@ -140,7 +126,7 @@ class ColorTableViewController: DragNDropViewController {
         infoLabel.center = screenCenter
         
         
-        tableView.addOpaqueView(0.6, color: UIColor.blackColor())
+        tableView.addOpaqueView(0.7, color: UIColor.blackColor())
         tableView.addSubview(showView)
         tableView.addSubview(infoLabel)
         

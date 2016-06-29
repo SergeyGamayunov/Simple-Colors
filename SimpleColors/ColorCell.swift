@@ -12,7 +12,7 @@ class ColorCell: UITableViewCell {
     
     @IBOutlet var cellLabels: [UILabel]!
     
-    @IBOutlet weak var ColorNameButton: UIButton!
+    @IBOutlet weak var colorNameButton: UIButton!
     @IBOutlet weak var HEXLabel: UILabel!
     @IBOutlet weak var redLabel: UILabel!
     @IBOutlet weak var greenLabel: UILabel!

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UINavigationControllerDelegate, UIScrollViewDelegate {
+class ViewController: UIViewController, UINavigationControllerDelegate {
     
     var colorModel = ColorModel(color: UIColor.whiteColor())
     
@@ -48,34 +48,38 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIScroll
     @IBOutlet weak var blueView: UIView!
     
     @IBOutlet var changeValueButtonsArray: [UIButton]!
-    
+	@IBOutlet var buttonOutlets: [UIButton]!
+	@IBOutlet var labelOutlets: [UILabel]!
+	
     @IBOutlet weak var writeButtonOutlet: UIButton!
     @IBOutlet weak var libraryButtonOutlet: UIButton!
     @IBOutlet weak var randomButtonOutlet: UIButton!
     @IBOutlet weak var cameraButtonOutlet: UIButton!
     @IBOutlet weak var photoButtonOutlet: UIButton!
-    @IBOutlet var buttonOutlets: [UIButton]!
+	
     
 //MARK: - View Did Load!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupButtons()
-        
+		
+		//delegates
         imagePicker.delegate = self
         scrollViewForColor.delegate = self
-        navigationController?.setNavigationBarHidden(true, animated: false)
         
         print("Main object is \(DataBase.objects)")
         print("Number of Colors is \(DataBase.numberOfColors)")
-        
+		
+		//UI setups
+        setupButtons()
         makeAndSetRandomColor(0.0)
-        
+		
+        //listening for ColorTable VC
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(returnedFromLibraryTableViewWithNotificationUserInfo), name: "SecVCPopped", object: nil)
     }
     
     func returnedFromLibraryTableViewWithNotificationUserInfo(notification: NSNotification) {
+		
         let userInfo = notification.userInfo as! [String: UIColor]
         let color = userInfo["color"]!
         
@@ -87,8 +91,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIScroll
         UIView.animateWithDuration(2) {
             self.changeBackGroundColor()
             self.changeSlidersAndLabels()
+			self.invertTextColor()
         }
-        invertTextColor()
+		
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -101,7 +106,20 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIScroll
 
     
 //MARK: - helping methods
-    
+	
+	func setupButtons() {
+		for button in buttonOutlets {
+			let image = button.imageView?.image?.imageWithRenderingMode(.AlwaysTemplate) //get image from button with ignoting color
+			button.setImage(image, forState: .Normal) //set image without color back
+		}
+		
+		redSlider.setThumbImage(UIImage(named: "RedThumb"), forState: .Normal)
+		greenSlider.setThumbImage(UIImage(named: "GreenThumb"), forState: .Normal)
+		blueSlider.setThumbImage(UIImage(named: "BlueThumb"), forState: .Normal)
+		
+		writeButtonOutlet.makeRoundedButton()
+	}
+	
     func disableAll(b: Bool) {
         let all = [
             redView, greenView, blueView, writeButtonOutlet, libraryButtonOutlet, randomButtonOutlet, cameraButtonOutlet, photoButtonOutlet
@@ -110,61 +128,35 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIScroll
             view.userInteractionEnabled = !b
         }
     }
-    
-    func setupButtons() {
-        for button in buttonOutlets {
-            let image = button.imageView?.image?.imageWithRenderingMode(.AlwaysTemplate)
-            button.setImage(image, forState: .Normal)
-        }
-        
-        redSlider.setThumbImage(UIImage(named: "RedThumb"), forState: .Normal)
-        greenSlider.setThumbImage(UIImage(named: "GreenThumb"), forState: .Normal)
-        blueSlider.setThumbImage(UIImage(named: "BlueThumb"), forState: .Normal)
-
-        writeButtonOutlet.makeRoundedButton()
-    }
-    
+	
     func makeAndSetRandomColor(withDuration: Double) {
-        
-        redSlider.minimumTrackTintColor = UIColor.redColor()
-        
         let randomColor = UIColor.randomColor()
         colorModel.setColorAsCurrent(randomColor)
+		
         UIView.animateWithDuration(withDuration) {
             self.changeBackGroundColor()
             self.changeSlidersAndLabels()
             self.invertTextColor()
         }
-        
-        
-        
     }
     
     func invertTextColor() {
-        
         let invertColor = colorModel.color.contrastColor()
-        let labels = [redLabel, greenLabel, blueLabel]
         
-        for label in labels {
+        for label in labelOutlets {
             label.textColor = invertColor
         }
-        
         for button in changeValueButtonsArray {
             button.setTitleColor(invertColor, forState: .Normal)
         }
-        
         for button in buttonOutlets {
             button.tintColor = invertColor
         }
-        
-        writeButtonOutlet.backgroundColor = invertColor.contrastColor()
+        writeButtonOutlet.backgroundColor = colorModel.color.reverseColor()
     }
     
     func changeBackGroundColor() {
-        let views = [self.view, redView, greenView, blueView]
-        for view in views {
-            view.backgroundColor = colorModel.color
-        }
+		view.backgroundColor = colorModel.color
     }
     
     func changeSlidersAndLabels() {
@@ -180,7 +172,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIScroll
         redLabel.text = String(Int(r))
         greenLabel.text = String(Int(g))
         blueLabel.text = String(Int(b))
-        
     }
     
     func getColorFromSliders() -> UIColor {
@@ -201,63 +192,34 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIScroll
         invertTextColor()
         
     }
-    
-    @IBAction func plusButton(sender: UIButton) {
-        
-        guard let color: Colors = Colors(rawValue: sender.tag) else {return}
+    //method for all plus/minus button, and small helping method
+    @IBAction func stepForSliderButton(sender: UIButton) {
+        guard let color = Colors(rawValue: abs(sender.tag)) else { return }
+		let plusStep = sender.tag > 0
         switch color {
-        case .Red:
-            let oldValue = Int(redSlider.value)
-            let newValue = oldValue + 1
-            redSlider.setValue(Float(newValue), animated: true)
-            invertTextColor()
-            slidersTouched(redSlider)
-        case .Green:
-            let oldValue = Int(greenSlider.value)
-            let newValue = oldValue + 1
-            greenSlider.setValue(Float(newValue), animated: true)
-            slidersTouched(greenSlider)
-        case .Blue:
-            let oldValue = Int(blueSlider.value)
-            let newValue = oldValue + 1
-            blueSlider.setValue(Float(newValue), animated: true)
-            slidersTouched(blueSlider)
-        }
-        invertTextColor()
-    }
-    
-    @IBAction func minusButton(sender: UIButton) {
-        guard let color: Colors = Colors(rawValue: sender.tag) else {return}
-        switch color {
-        case .Red:
-            let oldValue = Int(redSlider.value)
-            let newValue = oldValue - 1
-            redSlider.setValue(Float(newValue), animated: true)
-            slidersTouched(redSlider)
-        case .Green:
-            let oldValue = Int(greenSlider.value)
-            let newValue = oldValue - 1
-            greenSlider.setValue(Float(newValue), animated: true)
-            slidersTouched(greenSlider)
-        case .Blue:
-            let oldValue = Int(blueSlider.value)
-            let newValue = oldValue - 1
-            blueSlider.setValue(Float(newValue), animated: true)
-            slidersTouched(blueSlider)
+        case .Red:   stepForSlider(redSlider, plusStep: plusStep)
+        case .Green: stepForSlider(greenSlider, plusStep: plusStep)
+        case .Blue:  stepForSlider(blueSlider, plusStep: plusStep)
         }
     }
-    
-    //MARK: - Buttons
-
+	
+	func stepForSlider(slider: UISlider, plusStep: Bool) {
+		if plusStep {
+			slider.setValue(slider.value + 1, animated: true)
+		} else {
+			slider.setValue(slider.value - 1, animated: true)
+		}
+		slidersTouched(slider)
+	}
+	
+    //MARK: - Buttons Methods
     @IBAction func randomColorButton(sender: UIButton) {
         makeAndSetRandomColor(1.4)
     }
     
     @IBAction func photoButton(sender: UIButton) {
-        
         imagePicker.sourceType = .PhotoLibrary
         self.presentViewController(imagePicker, animated: true, completion: nil)
-        
     }
     
     @IBAction func cameraButton(sender: UIButton) {
@@ -277,11 +239,12 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIScroll
     }
     
     func addToDataBase(color: UIColor) {
-        var name = ""
-        let alCont = UIAlertController(title: "Name:", message: "Type the name of a color", preferredStyle: .Alert)
+		var name = ""
+        let alertController = UIAlertController(title: "Name:", message: "Type the name of a color", preferredStyle: .Alert)
+		
         //OK button
         let alAction = UIAlertAction(title: "OK", style: .Default) { (_) in
-            name = alCont.textFields![0].text!
+            name = alertController.textFields![0].text!
             DataBase.addColorToDataBase(color, name: name) //adding color to DB
             self.performSegueWithIdentifier("ColorTableSegue", sender: nil) // and go to the library
         }
@@ -291,19 +254,20 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIScroll
         let alCancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         
         //Adding buttons
-        alCont.addAction(alAction)
-        alCont.addAction(alCancel)
+        alertController.addAction(alAction)
+        alertController.addAction(alCancel)
         
         //Adding textfield for name
-        alCont.addTextFieldWithConfigurationHandler(nil)
+        alertController.addTextFieldWithConfigurationHandler(nil)
         
         //observe for empty textfield, switch off OK button
-        NSNotificationCenter.defaultCenter().addObserverForName(UITextFieldTextDidChangeNotification, object: alCont.textFields![0], queue: nil) { _ in
-            let textField = alCont.textFields![0]
-            alAction.enabled = !textField.text!.isEmpty
+		let textField = alertController.textFields![0]
+        NSNotificationCenter.defaultCenter().addObserverForName(UITextFieldTextDidChangeNotification, object: textField, queue: nil) { _ in
+			let isTextFieldEmpty = textField.text!.isEmpty
+            alAction.enabled = !isTextFieldEmpty
         }
         
-        presentViewController(alCont, animated: true, completion: nil)
+        presentViewController(alertController, animated: true, completion: nil)
     }
 }
 
@@ -331,10 +295,9 @@ extension ViewController: UIImagePickerControllerDelegate {
         } else {
             widthForScrollView = self.view.frame.size.width - 30
         }
+		
         heightForScrollView = widthForScrollView * ratio
-        frameForScrollView = CGRect(x: 10.0, y: 10.0, width: widthForScrollView, height: heightForScrollView)
-        
-        print("Frame for ScrollView is \(frameForScrollView)")
+        frameForScrollView = CGRect(x: 0.0, y: 0.0, width: widthForScrollView, height: heightForScrollView)
         
         //dismiss library
         dismissViewControllerAnimated(true, completion: nil)
@@ -363,13 +326,12 @@ extension ViewController: UIImagePickerControllerDelegate {
     }
     
     func showSampleColor(longpress: UILongPressGestureRecognizer) {
-        let touch = longpress.locationInView(imageViewForColor)
+        let touch = longpress.locationInView(scrollViewForColor)
         print("Place where we touched image is \(touch)")
         let x = Int(touch.x)
         let y = Int(touch.y)
         let colorOfTouch = imageViewForColor.image![x, y]
-        
-        
+		
         viewForSampleColor.frame = CGRect(x: x, y: y, width: 90, height: 90)
         viewForSampleColor.layer.borderWidth = 4
         viewForSampleColor.layer.borderColor = UIColor.blackColor().CGColor
@@ -388,7 +350,6 @@ extension ViewController: UIImagePickerControllerDelegate {
 extension ViewController {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        
         if !isScrollViewAppeared {
             return
         }
@@ -403,7 +364,7 @@ extension ViewController {
                 view.removeOpaqueView()
                 isScrollViewAppeared = false
             }
-            
+            //dismiss sampleView when touched outside its bounds
             let isInsideSampleView = CGRectContainsPoint(viewForSampleColor.frame, touchPlace)
             if !isInsideSampleView {
                 viewForSampleColor.removeFromSuperview()
@@ -420,7 +381,7 @@ extension ViewController {
     }
 }
 
-extension ViewController {
+extension ViewController: UIScrollViewDelegate {
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
         return imageViewForColor
     }
