@@ -11,7 +11,7 @@ iPhone app for picking color and explore itt RGB and HEX representation. iOS 9.0
 - Creating own colors with RGB sliders
 - Renaming all colors in user's Color List
 - Drag-n-Drop all color cell in user's Color List
-- Show fullscreen representaion color by left swipe
+- Showing fullscreen representation color by left swipe
 - Nice and modern user interface
 
 ##Installation
