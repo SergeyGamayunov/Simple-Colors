@@ -173,7 +173,7 @@ class ColorTableViewController: DragNDropViewController {
             alCont.addAction(alAction)
             alCont.addAction(alCancel)
             
-            //Adding textfield for name
+            //Adding textfield for naming color
             alCont.addTextFieldWithConfigurationHandler{ textField in
                 textField.text = DataBase.getColorAtIndex(indexPath.row).name
             }
