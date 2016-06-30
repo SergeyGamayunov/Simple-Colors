@@ -90,6 +90,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         if isScrollViewAppeared {
             scrollViewForColor.removeFromSuperview()
             view.removeOpaqueView()
+			isScrollViewAppeared = false
         }
         colorModel.setColorAsCurrent(color)
         UIView.animateWithDuration(2) {
@@ -103,12 +104,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        updateMinZoomScaleForSize(scrollViewForColor.bounds.size)
-    }
-
-    
+	
 //MARK: - helping methods
 	
 	func setupButtons() {
@@ -197,6 +193,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         
     }
     //method for all plus/minus button, and small helping method
+	//minus buttons have -1, -2, -3 tags for red, green, blue
+	//plus buttons have 1, 2, 3 tags
     @IBAction func stepForSliderButton(sender: UIButton) {
         guard let color = Colors(rawValue: abs(sender.tag)) else { return }
 		let plusStep = sender.tag > 0
@@ -307,11 +305,7 @@ extension ViewController: UIImagePickerControllerDelegate {
         dismissViewControllerAnimated(true, completion: nil)
         
         imageViewForColor = UIImageView(image: imageForColor)
-        imageViewForColor.layer.masksToBounds = true;
-        imageViewForColor.layer.contentsScale = UIScreen.mainScreen().scale;
-        imageViewForColor.layer.masksToBounds = false;
-        imageViewForColor.clipsToBounds = true;
-        
+		
         scrollViewForColor.frame = frameForScrollView
         scrollViewForColor.center = view.center
         scrollViewForColor.bounces = false
