@@ -77,6 +77,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         //listening for ColorTable VC
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(returnedFromLibraryTableViewWithNotificationUserInfo), name: "SecVCPopped", object: nil)
     }
+	
+	override func viewWillLayoutSubviews() {
+		updateMinZoomScaleForSize(scrollViewForColor.bounds.size)
+	}
     
     func returnedFromLibraryTableViewWithNotificationUserInfo(notification: NSNotification) {
 		
@@ -326,7 +330,7 @@ extension ViewController: UIImagePickerControllerDelegate {
     }
     
     func showSampleColor(longpress: UILongPressGestureRecognizer) {
-        let touch = longpress.locationInView(scrollViewForColor)
+        let touch = longpress.locationInView(imageViewForColor)
         print("Place where we touched image is \(touch)")
         let x = Int(touch.x)
         let y = Int(touch.y)

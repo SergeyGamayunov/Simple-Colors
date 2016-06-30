@@ -343,7 +343,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="286.5" y="292.5"/>
+            <point key="canvasLocation" x="364.5" y="292.5"/>
         </scene>
         <!--My Colors-->
         <scene sceneID="mrn-Ba-Jaw">
@@ -485,7 +485,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TYJ-hi-2Xe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="708.5" y="292.5"/>
+            <point key="canvasLocation" x="928.5" y="292.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="END-w6-IaK">
