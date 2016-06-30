@@ -13,3 +13,7 @@ iPhone app for picking color and explore itt RGB and HEX representation. iOS 9.0
 - Drag-n-Drop all color cell in user's Color List
 - Show fullscreen representaion color by left swipe
 - Nice and modern user interface
+
+##Installation
+**Requirement:** Xcode 7.3.1 and higher, iPhone 4S or newer, iOS 9.0 and higher. 
+Launch *SimpleColors.xcworkspace*, build the project.
