@@ -19,6 +19,8 @@
 		84E743811CEC9EB900849222 /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E743801CEC9EB800849222 /* ImageScrollView.swift */; };
 		84EEC8DA1CEDD15A00152F07 /* DragNDropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EEC8D91CEDD15A00152F07 /* DragNDropViewController.swift */; };
 		84F3A1641CDF9C4B00C238D6 /* ColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3A1631CDF9C4B00C238D6 /* ColorModel.swift */; };
+		A50C05D21D2B82FB000538DB /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A50C05D11D2B82FB000538DB /* InfoView.xib */; };
+		A50C05D41D2B8386000538DB /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50C05D31D2B8386000538DB /* InfoView.swift */; };
 		A52BA5691D09AB4E00532F38 /* UIButton+makeRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52BA5681D09AB4E00532F38 /* UIButton+makeRoundedButton.swift */; };
 		A52BA56B1D09ABE500532F38 /* UIColor+components.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52BA56A1D09ABE500532F38 /* UIColor+components.swift */; };
 		A52BA56D1D09AC2100532F38 /* UIImage+fixOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52BA56C1D09AC2100532F38 /* UIImage+fixOrientation.swift */; };
@@ -56,6 +58,8 @@
 		84E743801CEC9EB800849222 /* ImageScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
 		84EEC8D91CEDD15A00152F07 /* DragNDropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragNDropViewController.swift; sourceTree = "<group>"; };
 		84F3A1631CDF9C4B00C238D6 /* ColorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorModel.swift; sourceTree = "<group>"; };
+		A50C05D11D2B82FB000538DB /* InfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoView.xib; sourceTree = "<group>"; };
+		A50C05D31D2B8386000538DB /* InfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		A52BA5681D09AB4E00532F38 /* UIButton+makeRoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+makeRoundedButton.swift"; sourceTree = "<group>"; };
 		A52BA56A1D09ABE500532F38 /* UIColor+components.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+components.swift"; sourceTree = "<group>"; };
 		A52BA56C1D09AC2100532F38 /* UIImage+fixOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+fixOrientation.swift"; sourceTree = "<group>"; };
@@ -137,16 +141,26 @@
 		84DDAB1F1CDCED05009893E3 /* SimpleColors */ = {
 			isa = PBXGroup;
 			children = (
-				84DDAB201CDCED05009893E3 /* AppDelegate.swift */,
 				A52BA5671D09AB0500532F38 /* Utilities methods */,
 				84C855281CEAFDB4002FBE4B /* Model */,
+				A50C05D01D2B82AE000538DB /* View */,
 				84C855271CEAFDA3002FBE4B /* Controller */,
-				84DDAB241CDCED05009893E3 /* Main.storyboard */,
-				84DDAB271CDCED05009893E3 /* Assets.xcassets */,
-				84DDAB291CDCED05009893E3 /* LaunchScreen.storyboard */,
 				84DDAB2C1CDCED05009893E3 /* Info.plist */,
+				84DDAB201CDCED05009893E3 /* AppDelegate.swift */,
 			);
 			path = SimpleColors;
+			sourceTree = "<group>";
+		};
+		A50C05D01D2B82AE000538DB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84DDAB271CDCED05009893E3 /* Assets.xcassets */,
+				84DDAB291CDCED05009893E3 /* LaunchScreen.storyboard */,
+				84DDAB241CDCED05009893E3 /* Main.storyboard */,
+				A50C05D11D2B82FB000538DB /* InfoView.xib */,
+				A50C05D31D2B8386000538DB /* InfoView.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		A52BA5671D09AB0500532F38 /* Utilities methods */ = {
@@ -225,6 +239,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A50C05D21D2B82FB000538DB /* InfoView.xib in Resources */,
 				84DDAB2B1CDCED05009893E3 /* LaunchScreen.storyboard in Resources */,
 				84DDAB281CDCED05009893E3 /* Assets.xcassets in Resources */,
 				84DDAB261CDCED05009893E3 /* Main.storyboard in Resources */,
@@ -299,6 +314,7 @@
 				84C855261CEAF9B3002FBE4B /* UIView+addOpaqueView.swift in Sources */,
 				8442B5831CE5C4510027A9F6 /* ColorTableViewController.swift in Sources */,
 				A52BA56D1D09AC2100532F38 /* UIImage+fixOrientation.swift in Sources */,
+				A50C05D41D2B8386000538DB /* InfoView.swift in Sources */,
 				84DDAB211CDCED05009893E3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

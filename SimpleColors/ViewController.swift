@@ -18,6 +18,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
     var imageViewForColor = UIImageView()
     var viewForSampleColor = UIButton()
     let imagePicker = UIImagePickerController()
+	
     
     //MARK: - Boolean markers
     var isScrollViewAppeared: Bool = false {
@@ -271,6 +272,20 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         
         presentViewController(alertController, animated: true, completion: nil)
     }
+    
+    @IBAction func infoViewButton(sender: UIButton) {
+		let height = view.bounds.height * 0.7
+		let width = view.bounds.width * 0.75
+        let frame = CGRectMake(0, 0, width, height)
+		
+		let infoView = InfoView(frame: frame)
+		infoView.setupInfoView()
+		infoView.center = view.center
+		
+		view.addOpaqueView(0.7, color: .blackColor())
+        view.addSubview(infoView)
+    }
+    
 }
 
 //MARK: - UIImagePickerControllerDelegate Protocol Functions

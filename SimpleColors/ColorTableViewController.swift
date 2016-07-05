@@ -72,9 +72,11 @@ class ColorTableViewController: DragNDropViewController {
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		//created dictionary with info we want to passed back to root view
 		let color = DataBase.getColorAtIndex(indexPath.row).color
-		let userInfo = ["color": color]
+		
 		//posted notiications
+		let userInfo = ["color": color]
 		NSNotificationCenter.defaultCenter().postNotificationName("SecVCPopped", object: self, userInfo: userInfo)
+		
 		navigationController?.setNavigationBarHidden(true, animated: true)
 		navigationController?.popToRootViewControllerAnimated(true)
 		

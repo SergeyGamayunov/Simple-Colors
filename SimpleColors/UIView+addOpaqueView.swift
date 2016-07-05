@@ -44,5 +44,15 @@ extension UIView {
             opaqueView.removeFromSuperview()
         }
     }
-
+	
+	
+	class func loadFromNibNamed(nibNamed: String, bundle: NSBundle? = nil) -> UIView? {
+		let view = UINib(
+			nibName: nibNamed,
+			bundle: bundle
+			).instantiateWithOwner(nil, options: nil)[0] as? UIView
+		print("Info View is \(view)")
+		return view
+	}
+	
 }

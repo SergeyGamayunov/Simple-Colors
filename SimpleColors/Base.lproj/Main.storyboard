@@ -279,6 +279,9 @@
                                                             <constraint firstAttribute="width" secondItem="OK7-IV-p8c" secondAttribute="height" id="I6Q-Bx-fc4"/>
                                                         </constraints>
                                                         <state key="normal" image="Info"/>
+                                                        <connections>
+                                                            <action selector="infoViewButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wcq-Lb-KKV"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -480,7 +483,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Colors" id="ilQ-JF-q64">
-                        <barButtonItem key="backBarButtonItem" title="Back" style="done" systemItem="cancel" id="t1n-yU-blM"/>
+                        <barButtonItem key="backBarButtonItem" style="done" systemItem="cancel" id="t1n-yU-blM"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TYJ-hi-2Xe" userLabel="First Responder" sceneMemberID="firstResponder"/>
