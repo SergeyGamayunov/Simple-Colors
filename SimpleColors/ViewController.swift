@@ -11,12 +11,13 @@ import UIKit
 class ViewController: UIViewController, UINavigationControllerDelegate {
     
     var colorModel = ColorModel(color: UIColor.whiteColor())
-    
+	
     //MARK: - Programmatically views
     var scrollViewForColor = ImageScrollView()
     var minScaleOfScrollView: CGFloat = 0.0
     var imageViewForColor = UIImageView()
     var viewForSampleColor = UIButton()
+	var infoView = InfoView()
     let imagePicker = UIImagePickerController()
 	
     
@@ -31,10 +32,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
     var isSampleColorViewAppeared: Bool = false
-    var isBGColorBright: Bool {
-        return (view.backgroundColor?.isBright)!
-    }
-    
+	var isInfoViewAppeared: Bool = false
+	
 //MARK: - Outlets
     
     @IBOutlet weak var redSlider: UISlider!
@@ -118,7 +117,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
 		greenSlider.setThumbImage(UIImage(named: "GreenThumb"), forState: .Normal)
 		blueSlider.setThumbImage(UIImage(named: "BlueThumb"), forState: .Normal)
 		
-		writeButtonOutlet.makeRoundedButton()
+		writeButtonOutlet.makeRoundedButton(with: 0.5)
 	}
 	
     func disableAll(b: Bool) {
@@ -278,12 +277,17 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
 		let width = view.bounds.width * 0.75
         let frame = CGRectMake(0, 0, width, height)
 		
-		let infoView = InfoView(frame: frame)
+		infoView = InfoView(frame: frame)
 		infoView.setupInfoView()
 		infoView.center = view.center
-		
-		view.addOpaqueView(0.7, color: .blackColor())
+		infoView.center.x -= view.bounds.width
+		self.view.addOpaqueView(0.3, color: .blackColor())
         view.addSubview(infoView)
+		isInfoViewAppeared = true
+		
+		UIView.animateWithDuration(0.5) {
+			self.infoView.center.x += self.view.bounds.width
+		}
     }
     
 }
@@ -363,30 +367,47 @@ extension ViewController: UIImagePickerControllerDelegate {
 extension ViewController {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        if !isScrollViewAppeared {
+        if !isScrollViewAppeared && !isInfoViewAppeared {
             return
         }
 
-        //got point of touch and dismiss ScrollView
+        //got point of touch
         if let touchPlace = touches.first?.locationInView(view) {
-            
-            let isInside = CGRectContainsPoint(scrollViewForColor.frame, touchPlace)
-            print(" Place of touch is \(touchPlace) and is Inside \(isInside)")
-            if !isInside {
-                scrollViewForColor.removeFromSuperview()
-                view.removeOpaqueView()
-                isScrollViewAppeared = false
-            }
-            //dismiss sampleView when touched outside its bounds
-            let isInsideSampleView = CGRectContainsPoint(viewForSampleColor.frame, touchPlace)
-            if !isInsideSampleView {
-                viewForSampleColor.removeFromSuperview()
-                isSampleColorViewAppeared = false
-                scrollViewForColor.userInteractionEnabled = true
-            }
+			
+			//dismiss ScrollView
+			if isScrollViewAppeared {
+				let isInsideScrollView = CGRectContainsPoint(scrollViewForColor.frame, touchPlace)
+				if !isInsideScrollView {
+					scrollViewForColor.removeFromSuperview()
+					view.removeOpaqueView()
+					isScrollViewAppeared = false
+				}
+				
+				//dismiss sampleView when touched outside its bounds
+				let isInsideSampleView = CGRectContainsPoint(viewForSampleColor.frame, touchPlace)
+				if !isInsideSampleView {
+					viewForSampleColor.removeFromSuperview()
+					isSampleColorViewAppeared = false
+					scrollViewForColor.userInteractionEnabled = true
+				}
+			}
+			
+			if isInfoViewAppeared {
+				let isInsideInfoView = CGRectContainsPoint(infoView.frame, touchPlace)
+				if !isInsideInfoView {
+					UIView.animateWithDuration(0.3) {
+						self.infoView.center.x -= self.view.bounds.width
+						self.view.removeOpaqueView()
+					}
+					
+					//infoView.removeFromSuperview()
+					isInfoViewAppeared = false
+					
+				}
+			}
         }
     }
-    
+	
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
         if motion == .MotionShake {
             makeAndSetRandomColor(1.4)

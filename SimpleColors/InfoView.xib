@@ -4,25 +4,84 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InfoView" customModule="SimpleColors" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InfoView" customModule="SimpleColors" customModuleProvider="target">
+            <connections>
+                <outletCollection property="connectButtons" destination="bRn-WD-BEk" collectionClass="NSMutableArray" id="OjZ-v5-sHA"/>
+                <outletCollection property="connectButtons" destination="w0F-dM-R07" collectionClass="NSMutableArray" id="cz3-ZZ-Iol"/>
+                <outletCollection property="connectButtons" destination="Odk-oJ-unZ" collectionClass="NSMutableArray" id="FTA-xF-d3z"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Simple Colors" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Nxh-HN-qUw">
-                    <rect key="frame" x="35" y="100" width="530" height="71"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="60"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="c7D-Lo-Naz">
+                    <rect key="frame" x="35" y="50" width="530" height="169"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Simple Colors" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Nxh-HN-qUw">
+                            <rect key="frame" x="90" y="0.0" width="350" height="71"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="60"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8LG-7c-0gq">
+                            <rect key="frame" x="256" y="94" width="19" height="20"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sergey Gamayunov" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="OA4-WC-CoG">
+                            <rect key="frame" x="154" y="137" width="222" height="32"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="27"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="8VR-8I-GrV" userLabel="Contact Stack">
+                    <rect key="frame" x="35" y="525" width="530" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRn-WD-BEk" userLabel="Facebook button">
+                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <state key="normal" image="FB">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="facebookOpenButton:" destination="-1" eventType="touchUpInside" id="nUv-ij-aww"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w0F-dM-R07" userLabel="Google button">
+                            <rect key="frame" x="240" y="0.0" width="50" height="50"/>
+                            <state key="normal" image="Google">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="mailOpenButton:" destination="-1" eventType="touchUpInside" id="Gc8-U9-onP"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Odk-oJ-unZ" userLabel="linkedIn button">
+                            <rect key="frame" x="480" y="0.0" width="50" height="50"/>
+                            <state key="normal" image="linkedin">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                        </button>
+                    </subviews>
+                </stackView>
             </subviews>
             <constraints>
-                <constraint firstItem="Nxh-HN-qUw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="35" id="QTg-Ms-GRl"/>
-                <constraint firstItem="Nxh-HN-qUw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="100" id="Yl1-6L-fdD"/>
-                <constraint firstAttribute="trailing" secondItem="Nxh-HN-qUw" secondAttribute="trailing" constant="35" id="eMN-m3-5FO"/>
-                <constraint firstItem="Nxh-HN-qUw" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="uFh-qH-WqA"/>
+                <constraint firstItem="8VR-8I-GrV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="35" id="4om-iG-ivl"/>
+                <constraint firstItem="c7D-Lo-Naz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="35" id="Cci-VE-D6V"/>
+                <constraint firstItem="c7D-Lo-Naz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="50" id="Epa-v0-ry9"/>
+                <constraint firstAttribute="bottom" secondItem="8VR-8I-GrV" secondAttribute="bottom" constant="25" id="LKt-6e-EEr"/>
+                <constraint firstAttribute="trailing" secondItem="8VR-8I-GrV" secondAttribute="trailing" constant="35" id="Zeu-XZ-3ba"/>
+                <constraint firstAttribute="trailing" secondItem="c7D-Lo-Naz" secondAttribute="trailing" constant="35" id="svo-4J-BVl"/>
             </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="FB" width="50" height="50"/>
+        <image name="Google" width="50" height="50"/>
+        <image name="linkedin" width="50" height="50"/>
+    </resources>
 </document>

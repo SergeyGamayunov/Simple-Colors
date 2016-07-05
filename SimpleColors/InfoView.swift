@@ -10,8 +10,13 @@ import UIKit
 
 class InfoView: UIView {
 	
+    @IBOutlet var connectButtons: [UIButton]!
 	var view: UIView!
 	var blurView: UIVisualEffectView!
+	
+	let URLFacebookApp = NSURL(string: "fb://profile/sergey.gamayunov.33")!
+	let URLFacebookBrowser = NSURL(string: "http://www.facebook.com/sergey.gamayunov.33")!
+	let email = NSURL(string: "mailto:sergey.gamayunov.87@gmail.com")!
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -24,15 +29,17 @@ class InfoView: UIView {
 		xibSetup()
 	}
 	
+	
+	
 	func xibSetup() {
 		view = loadViewFromNib()
 		view.frame = bounds
 		
-		let effect = UIBlurEffect(style: .ExtraLight)
-		blurView = UIVisualEffectView(frame: bounds)
-		blurView.effect = effect
-		view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
-		blurView.addSubview(view)
+		let blur = UIBlurEffect(style: .ExtraLight)
+		blurView = UIVisualEffectView(effect: blur)
+		blurView.frame = bounds
+		
+		blurView.contentView.addSubview(view)
 		addSubview(blurView)
 	}
 	
@@ -53,10 +60,22 @@ class InfoView: UIView {
 		layer.shadowRadius = 10
 		layer.cornerRadius = 20
 		
-		
-		
-		
-		
+		for button in connectButtons {
+			button.makeRoundedButton(with: 0.5)
+		}
 	}
+    
+    @IBAction func facebookOpenButton(sender: UIButton) {
+		if UIApplication.sharedApplication().canOpenURL(URLFacebookApp) {
+			UIApplication.sharedApplication().openURL(URLFacebookApp)
+		} else {
+			UIApplication.sharedApplication().openURL(URLFacebookBrowser)
+		}
+		
+    }
+    
+    @IBAction func mailOpenButton(sender: UIButton) {
+		UIApplication.sharedApplication().openURL(email)
+    }
 
 }
