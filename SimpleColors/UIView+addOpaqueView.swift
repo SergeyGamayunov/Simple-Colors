@@ -33,26 +33,32 @@ extension UIView {
         let opaqueView = UIView(frame: frame)
         opaqueView.tag = tagForOpaqueView
         opaqueView.backgroundColor = color
-        opaqueView.alpha = alpha
+		
         self.addSubview(opaqueView)
-        
-        
+		opaqueView.fade(false)
     }
     
     func removeOpaqueView() {
         if let opaqueView = self.viewWithTag(tagForOpaqueView) {
-            opaqueView.removeFromSuperview()
-        }
-    }
-	
-	
-	class func loadFromNibNamed(nibNamed: String, bundle: NSBundle? = nil) -> UIView? {
-		let view = UINib(
-			nibName: nibNamed,
-			bundle: bundle
-			).instantiateWithOwner(nil, options: nil)[0] as? UIView
-		print("Info View is \(view)")
-		return view
+			opaqueView.fade(true)
+			opaqueView.removeFromSuperview()
+		}
+			
 	}
+	
+	func fade(fading: Bool, duration: NSTimeInterval = 1.0) {
+		if fading {
+			UIView.animateWithDuration(duration) {
+				self.alpha = 0.0
+			}
+		} else {
+			self.alpha = 0.0
+			UIView.animateWithDuration(duration) {
+				self.alpha = 0.8
+			}
+		}
+		
+	}
+	
 	
 }

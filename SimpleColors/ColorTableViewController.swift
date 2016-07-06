@@ -113,25 +113,27 @@ class ColorTableViewController: DragNDropViewController {
         let frameForShowView = CGRect(origin: CGPoint(x: 10, y: 10), size: sizeForShowView)
         showView = UIView(frame: frameForShowView)
         showView.center = screenCenter
-        showView.backgroundColor = color
-        showView.layer.cornerRadius = showView.bounds.width * 0.1
-        showView.layer.shadowRadius = 10.0
-        showView.layer.shadowOffset = CGSize(width: 10, height: 10)
-    
-        showView.layer.shadowColor = color?.contrastColor().CGColor
-        
-        let frameForInfoLabel = CGRect(x: 10, y: 10, width: 300, height: 100)
-        infoLabel = UILabel(frame: frameForInfoLabel)
-        infoLabel.text = "Swipe to dismiss..."
-        infoLabel.textColor = color!.contrastColor()
-        infoLabel.textAlignment = .Center
-        infoLabel.center = screenCenter
-        
-        
+		showView.center.x += tableView.bounds.width
+		showView.backgroundColor = color
+        showView.layer.cornerRadius = showView.bounds.width * 0.2
+		
+		let frameForInfoLabel = CGRect(x: 10, y: 10, width: sizeForShowView.width, height: 100)
+		infoLabel = UILabel(frame: frameForInfoLabel)
+		infoLabel.text = "Swipe to dismiss->"
+		infoLabel.font = UIFont(name: "Helvetica Neue", size: 18.0)
+		infoLabel.textColor = color!.contrastColor().colorWithAlphaComponent(0.7)
+		infoLabel.textAlignment = .Left
+		
         tableView.addOpaqueView(0.7, color: UIColor.blackColor())
+		showView.addSubview(infoLabel)
         tableView.addSubview(showView)
-        tableView.addSubview(infoLabel)
-        
+		UIView.animateWithDuration(0.5) {
+			self.infoLabel.center = self.showView.center
+			
+			self.showView.center.x -= self.tableView.bounds.width
+			
+		}
+		self.infoLabel.center = screenCenter
         tableView.scrollEnabled = false
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(ColorTableViewController.dismissShowView))
         let tap = UITapGestureRecognizer(target: self, action: #selector(ColorTableViewController.dismissShowView))
@@ -140,9 +142,9 @@ class ColorTableViewController: DragNDropViewController {
     }
     
     func dismissShowView() {
-        UIView.animateWithDuration(0.2) {
+        UIView.animateWithDuration(0.5) {
             self.infoLabel.removeFromSuperview()
-            self.showView.frame.origin.x = self.tableView.frame.size.width + 20
+            self.showView.frame.origin.x += self.tableView.frame.size.width
         }
         tableView.removeOpaqueView()
         self.navigationController?.setNavigationBarHidden(false, animated: true)

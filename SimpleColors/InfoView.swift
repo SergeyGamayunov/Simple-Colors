@@ -17,6 +17,8 @@ class InfoView: UIView {
 	let URLFacebookApp = NSURL(string: "fb://profile/sergey.gamayunov.33")!
 	let URLFacebookBrowser = NSURL(string: "http://www.facebook.com/sergey.gamayunov.33")!
 	let email = NSURL(string: "mailto:sergey.gamayunov.87@gmail.com")!
+	let URLLinkedInBrowser = NSURL(string: "https://www.linkedin.com/in/sergey-gamayunov-3bb99b123")!
+	let URLLinkedInApp = NSURL(string: "linkedin://in/sergey-gamayunov-3bb99b123")!
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -71,11 +73,18 @@ class InfoView: UIView {
 		} else {
 			UIApplication.sharedApplication().openURL(URLFacebookBrowser)
 		}
-		
     }
     
     @IBAction func mailOpenButton(sender: UIButton) {
 		UIApplication.sharedApplication().openURL(email)
     }
 
+    @IBAction func linkedInOpenButton(sender: UIButton) {
+		if UIApplication.sharedApplication().canOpenURL(URLLinkedInApp) {
+			UIApplication.sharedApplication().openURL(URLLinkedInApp)
+		} else {
+			UIApplication.sharedApplication().openURL(URLLinkedInBrowser)
+		}
+    }
+	
 }
