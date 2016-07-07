@@ -273,8 +273,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     @IBAction func infoViewButton(sender: UIButton) {
-		let height = view.bounds.height * 0.7
-		let width = view.bounds.width * 0.75
+		let height = view.bounds.height * 0.8
+		let width = view.bounds.width * 0.8
         let frame = CGRectMake(0, 0, width, height)
 		
 		infoView = InfoView(frame: frame)

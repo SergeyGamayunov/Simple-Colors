@@ -40,10 +40,10 @@
                         </label>
                     </subviews>
                 </stackView>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="8VR-8I-GrV" userLabel="Contact Stack">
-                    <rect key="frame" x="35" y="525" width="530" height="50"/>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="8VR-8I-GrV" userLabel="Contact Stack">
+                    <rect key="frame" x="25" y="525" width="550" height="50"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRn-WD-BEk" userLabel="Facebook button">
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRn-WD-BEk" userLabel="Facebook button">
                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                             <state key="normal" image="FB">
                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -52,8 +52,8 @@
                                 <action selector="facebookOpenButton:" destination="-1" eventType="touchUpInside" id="nUv-ij-aww"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w0F-dM-R07" userLabel="Google button">
-                            <rect key="frame" x="240" y="0.0" width="50" height="50"/>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w0F-dM-R07" userLabel="Google button">
+                            <rect key="frame" x="250" y="0.0" width="50" height="50"/>
                             <state key="normal" image="Google">
                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
@@ -61,8 +61,8 @@
                                 <action selector="mailOpenButton:" destination="-1" eventType="touchUpInside" id="Gc8-U9-onP"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Odk-oJ-unZ" userLabel="linkedIn button">
-                            <rect key="frame" x="480" y="0.0" width="50" height="50"/>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Odk-oJ-unZ" userLabel="linkedIn button">
+                            <rect key="frame" x="500" y="0.0" width="50" height="50"/>
                             <state key="normal" image="linkedin">
                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
@@ -74,11 +74,11 @@
                 </stackView>
             </subviews>
             <constraints>
-                <constraint firstItem="8VR-8I-GrV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="35" id="4om-iG-ivl"/>
+                <constraint firstItem="8VR-8I-GrV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="25" id="4om-iG-ivl"/>
                 <constraint firstItem="c7D-Lo-Naz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="35" id="Cci-VE-D6V"/>
                 <constraint firstItem="c7D-Lo-Naz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="50" id="Epa-v0-ry9"/>
                 <constraint firstAttribute="bottom" secondItem="8VR-8I-GrV" secondAttribute="bottom" constant="25" id="LKt-6e-EEr"/>
-                <constraint firstAttribute="trailing" secondItem="8VR-8I-GrV" secondAttribute="trailing" constant="35" id="Zeu-XZ-3ba"/>
+                <constraint firstAttribute="trailing" secondItem="8VR-8I-GrV" secondAttribute="trailing" constant="25" id="Zeu-XZ-3ba"/>
                 <constraint firstAttribute="trailing" secondItem="c7D-Lo-Naz" secondAttribute="trailing" constant="35" id="svo-4J-BVl"/>
             </constraints>
         </view>
