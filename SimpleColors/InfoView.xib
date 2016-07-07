@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InfoView" customModule="SimpleColors" customModuleProvider="target">
             <connections>
+                <outlet property="name" destination="OA4-WC-CoG" id="vXQ-9k-MEG"/>
                 <outletCollection property="connectButtons" destination="bRn-WD-BEk" collectionClass="NSMutableArray" id="OjZ-v5-sHA"/>
                 <outletCollection property="connectButtons" destination="w0F-dM-R07" collectionClass="NSMutableArray" id="cz3-ZZ-Iol"/>
                 <outletCollection property="connectButtons" destination="Odk-oJ-unZ" collectionClass="NSMutableArray" id="FTA-xF-d3z"/>

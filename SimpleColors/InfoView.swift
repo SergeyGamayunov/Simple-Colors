@@ -7,8 +7,18 @@
 //
 
 import UIKit
-
+@IBDesignable
 class InfoView: UIView {
+	
+	@IBOutlet weak var name: UILabel!
+	@IBInspectable
+	var nametext: String {
+		get {
+			return name.text!
+		} set {
+			name.text = newValue
+		}
+	}
 	
     @IBOutlet var connectButtons: [UIButton]!
 	var view: UIView!

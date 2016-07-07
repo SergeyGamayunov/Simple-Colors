@@ -110,30 +110,36 @@ class ColorTableViewController: DragNDropViewController {
         let screenCenter = CGPoint(x: UIScreen.mainScreen().bounds.width/2, y: UIScreen.mainScreen().bounds.height/2 + tableView.contentOffset.y)
         
         let sizeForShowView = CGSize(width: UIScreen.mainScreen().bounds.width*0.85, height: UIScreen.mainScreen().bounds.height*0.85)
-        let frameForShowView = CGRect(origin: CGPoint(x: 10, y: 10), size: sizeForShowView)
-        showView = UIView(frame: frameForShowView)
-        showView.center = screenCenter
-		showView.center.x += tableView.bounds.width
-		showView.backgroundColor = color
-        showView.layer.cornerRadius = showView.bounds.width * 0.2
+        let frameForShowView = CGRect(origin: CGPoint(x: 0, y: 0), size: sizeForShowView)
 		
-		let frameForInfoLabel = CGRect(x: 10, y: 10, width: sizeForShowView.width, height: 100)
+        showView = UIView(frame: frameForShowView)
+		showView.backgroundColor = color
+        showView.layer.cornerRadius = showView.bounds.width * 0.15
+		
+		let frameForInfoLabel = CGRect(x: 0, y: 0, width: sizeForShowView.width, height: 100)
 		infoLabel = UILabel(frame: frameForInfoLabel)
-		infoLabel.text = "Swipe to dismiss->"
+		infoLabel.text = "Swipe to dismiss ➔"
 		infoLabel.font = UIFont(name: "Helvetica Neue", size: 18.0)
-		infoLabel.textColor = color!.contrastColor().colorWithAlphaComponent(0.7)
-		infoLabel.textAlignment = .Left
+		infoLabel.textColor = color!.contrastColor().colorWithAlphaComponent(0.5)
+		infoLabel.textAlignment = .Center
+		
+		infoLabel.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activateConstraints([
+			infoLabel.centerXAnchor.constraintEqualToAnchor(showView.centerXAnchor),
+			infoLabel.centerYAnchor.constraintEqualToAnchor(showView.centerYAnchor),
+			])
 		
         tableView.addOpaqueView(0.7, color: UIColor.blackColor())
+		
+		showView.center = screenCenter
+		showView.center.x += tableView.bounds.width
 		showView.addSubview(infoLabel)
-        tableView.addSubview(showView)
+		tableView.addSubview(showView)
+		
 		UIView.animateWithDuration(0.5) {
-			self.infoLabel.center = self.showView.center
-			
 			self.showView.center.x -= self.tableView.bounds.width
-			
 		}
-		self.infoLabel.center = screenCenter
+		
         tableView.scrollEnabled = false
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(ColorTableViewController.dismissShowView))
         let tap = UITapGestureRecognizer(target: self, action: #selector(ColorTableViewController.dismissShowView))
