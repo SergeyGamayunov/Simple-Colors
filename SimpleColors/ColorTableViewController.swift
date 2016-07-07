@@ -123,11 +123,7 @@ class ColorTableViewController: DragNDropViewController {
 		infoLabel.textColor = color!.contrastColor().colorWithAlphaComponent(0.5)
 		infoLabel.textAlignment = .Center
 		
-		infoLabel.translatesAutoresizingMaskIntoConstraints = false
-		NSLayoutConstraint.activateConstraints([
-			infoLabel.centerXAnchor.constraintEqualToAnchor(showView.centerXAnchor),
-			infoLabel.centerYAnchor.constraintEqualToAnchor(showView.centerYAnchor),
-			])
+		
 		
         tableView.addOpaqueView(0.7, color: UIColor.blackColor())
 		
@@ -135,6 +131,12 @@ class ColorTableViewController: DragNDropViewController {
 		showView.center.x += tableView.bounds.width
 		showView.addSubview(infoLabel)
 		tableView.addSubview(showView)
+		
+		infoLabel.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activateConstraints([
+			infoLabel.centerXAnchor.constraintEqualToAnchor(showView.centerXAnchor),
+			infoLabel.centerYAnchor.constraintEqualToAnchor(showView.centerYAnchor),
+			])
 		
 		UIView.animateWithDuration(0.5) {
 			self.showView.center.x -= self.tableView.bounds.width
