@@ -73,33 +73,20 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
 		//UI setups
         setupButtons()
         makeAndSetRandomColor(0.0)
-		
-        //listening for ColorTable VC
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(returnedFromLibraryTableViewWithNotificationUserInfo), name: "SecVCPopped", object: nil)
     }
 	
 	override func viewWillLayoutSubviews() {
 		updateMinZoomScaleForSize(scrollViewForColor.bounds.size)
 	}
-    
-    func returnedFromLibraryTableViewWithNotificationUserInfo(notification: NSNotification) {
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if segue.identifier == "ColorTableSegue" {
+			let controller = segue.destinationViewController as! ColorTableViewController
+			controller.delegate = self
+		}
 		
-        let userInfo = notification.userInfo as! [String: UIColor]
-        let color = userInfo["color"]!
-        
-        if isScrollViewAppeared {
-            scrollViewForColor.removeFromSuperview()
-            view.removeOpaqueView()
-			isScrollViewAppeared = false
-        }
-        colorModel.setColorAsCurrent(color)
-        UIView.animateWithDuration(2) {
-            self.changeBackGroundColor()
-            self.changeSlidersAndLabels()
-			self.invertTextColor()
-        }
-		
-    }
+	}
+	
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
@@ -281,7 +268,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
 		infoView.setupInfoView()
 		infoView.center = view.center
 		infoView.center.x -= view.bounds.width
-		self.view.addOpaqueView(0.3, color: .blackColor())
+		self.view.addOpaqueView(.blackColor())
         view.addSubview(infoView)
 		isInfoViewAppeared = true
 		
@@ -289,7 +276,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
 			self.infoView.center.x += self.view.bounds.width
 		}
     }
-    
 }
 
 //MARK: - UIImagePickerControllerDelegate Protocol Functions
@@ -333,7 +319,7 @@ extension ViewController: UIImagePickerControllerDelegate {
         scrollViewForColor.contentSize = imageViewForColor.bounds.size
         updateMinZoomScaleForSize(scrollViewForColor.bounds.size)
         scrollViewForColor.zoomScale = minScaleOfScrollView
-        view.addOpaqueView(0.7, color: UIColor.blackColor())
+        view.addOpaqueView(.blackColor())
         view.addSubview(scrollViewForColor)
         
         isScrollViewAppeared = true
@@ -342,7 +328,9 @@ extension ViewController: UIImagePickerControllerDelegate {
         scrollViewForColor.addGestureRecognizer(longpress)
     }
     
-    func showSampleColor(longpress: UILongPressGestureRecognizer) {
+    func showSampleColor(longpress:
+		UILongPressGestureRecognizer) {
+		
         let touch = longpress.locationInView(imageViewForColor)
         print("Place where we touched image is \(touch)")
         let x = Int(touch.x)
@@ -414,7 +402,7 @@ extension ViewController {
         }
     }
 }
-
+//MARK: - UIScrollViewDelegate
 extension ViewController: UIScrollViewDelegate {
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
         return imageViewForColor
@@ -429,3 +417,14 @@ extension ViewController: UIScrollViewDelegate {
         scrollViewForColor.maximumZoomScale = 30.0
     }
 }
+//MARK: - ColorTableViewControllerDelegate
+extension ViewController: ColorTableViewControllerDelegate {
+	func colorTableViewController(controller: ColorTableViewController, didSelectColor color: UIColor) {
+		colorModel.setColorAsCurrent(color)
+		changeBackGroundColor()
+		changeSlidersAndLabels()
+		invertTextColor()
+		print("Test delegate")
+	}
+}
+

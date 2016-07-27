@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InfoView" customModule="SimpleColors" customModuleProvider="target">
             <connections>
                 <outlet property="name" destination="OA4-WC-CoG" id="vXQ-9k-MEG"/>
+                <outlet property="projectName" destination="Nxh-HN-qUw" id="BM6-ci-4EP"/>
                 <outletCollection property="connectButtons" destination="bRn-WD-BEk" collectionClass="NSMutableArray" id="OjZ-v5-sHA"/>
                 <outletCollection property="connectButtons" destination="w0F-dM-R07" collectionClass="NSMutableArray" id="cz3-ZZ-Iol"/>
                 <outletCollection property="connectButtons" destination="Odk-oJ-unZ" collectionClass="NSMutableArray" id="FTA-xF-d3z"/>
@@ -43,27 +44,27 @@
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="8VR-8I-GrV" userLabel="Contact Stack">
                     <rect key="frame" x="25" y="525" width="550" height="50"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRn-WD-BEk" userLabel="Facebook button">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRn-WD-BEk" userLabel="Facebook button">
                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                            <state key="normal" image="FB">
+                            <state key="normal" image="FB.png">
                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
                                 <action selector="facebookOpenButton:" destination="-1" eventType="touchUpInside" id="nUv-ij-aww"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w0F-dM-R07" userLabel="Google button">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w0F-dM-R07" userLabel="Google button">
                             <rect key="frame" x="250" y="0.0" width="50" height="50"/>
-                            <state key="normal" image="Google">
+                            <state key="normal" image="Google.png">
                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
                                 <action selector="mailOpenButton:" destination="-1" eventType="touchUpInside" id="Gc8-U9-onP"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Odk-oJ-unZ" userLabel="linkedIn button">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Odk-oJ-unZ" userLabel="linkedIn button">
                             <rect key="frame" x="500" y="0.0" width="50" height="50"/>
-                            <state key="normal" image="linkedin">
+                            <state key="normal" image="linkedin.png">
                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
@@ -84,8 +85,8 @@
         </view>
     </objects>
     <resources>
-        <image name="FB" width="50" height="50"/>
-        <image name="Google" width="50" height="50"/>
-        <image name="linkedin" width="50" height="50"/>
+        <image name="FB.png" width="50" height="50"/>
+        <image name="Google.png" width="50" height="50"/>
+        <image name="linkedin.png" width="50" height="50"/>
     </resources>
 </document>

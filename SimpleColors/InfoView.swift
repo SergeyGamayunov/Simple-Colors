@@ -8,41 +8,52 @@
 
 import UIKit
 @IBDesignable
-class InfoView: UIView {
-	
+public class InfoView: UIView {
+	//MARK: - Outlets
 	@IBOutlet weak var name: UILabel!
+	@IBOutlet weak var projectName: UILabel!
+	//MARK: - Inspectable properties
 	@IBInspectable
-	var nametext: String {
+	public var nametext: String {
 		get {
-			return name.text!
+			return name.text ?? ""
 		} set {
 			name.text = newValue
 		}
 	}
+	@IBInspectable
+	public var projectNameText: String {
+		get {
+			return projectName.text ?? ""
+		} set {
+			projectName.text = newValue
+		}
+	}
 	
     @IBOutlet var connectButtons: [UIButton]!
+	//MARK: - Programmatic views properties
 	var view: UIView!
 	var blurView: UIVisualEffectView!
 	
+	//MARK: - URL constants
 	let URLFacebookApp = NSURL(string: "fb://profile/sergey.gamayunov.33")!
 	let URLFacebookBrowser = NSURL(string: "http://www.facebook.com/sergey.gamayunov.33")!
-	let email = NSURL(string: "mailto:sergey.gamayunov.87@gmail.com")!
+	let email = NSURL(string: "mailto://sergey.gamayunov.87@gmail.com")!
 	let URLLinkedInBrowser = NSURL(string: "https://www.linkedin.com/in/sergey-gamayunov-3bb99b123")!
 	let URLLinkedInApp = NSURL(string: "linkedin://in/sergey-gamayunov-3bb99b123")!
 	
-	override init(frame: CGRect) {
+	//MARK: - Intializers
+	override public init(frame: CGRect) {
 		super.init(frame: frame)
 		xibSetup()
-		
 	}
 	
-	required init?(coder aDecoder: NSCoder) {
+	required public init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 		xibSetup()
 	}
 	
-	
-	
+	//MARK: - Setup functions
 	func xibSetup() {
 		view = loadViewFromNib()
 		view.frame = bounds
@@ -53,6 +64,7 @@ class InfoView: UIView {
 		
 		blurView.contentView.addSubview(view)
 		addSubview(blurView)
+		setupInfoView()
 	}
 	
 	func loadViewFromNib() -> UIView {
@@ -73,10 +85,11 @@ class InfoView: UIView {
 		layer.cornerRadius = 20
 		
 		for button in connectButtons {
-			button.makeRoundedButton(with: 0.5)
+			button.layer.cornerRadius = button.bounds.width * 0.5
 		}
 	}
-    
+	
+	//MARK: - IB methods
     @IBAction func facebookOpenButton(sender: UIButton) {
 		if UIApplication.sharedApplication().canOpenURL(URLFacebookApp) {
 			UIApplication.sharedApplication().openURL(URLFacebookApp)

@@ -11,7 +11,9 @@ import UIKit
 
 extension UIButton {
 	func makeRoundedButton(with multiplier: CGFloat) {
-        self.layer.cornerRadius = self.frame.size.height * multiplier
+        self.layer.cornerRadius = self.bounds.height * multiplier
         self.clipsToBounds = true
     }
+	
+	
 }

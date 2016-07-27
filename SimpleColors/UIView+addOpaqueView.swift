@@ -11,11 +11,10 @@ import UIKit
 
 private let tagForOpaqueView = 666
 
-
 //extension to opaque view
 extension UIView {
 
-    func addOpaqueView(alpha: CGFloat, color: UIColor) {
+    func addOpaqueView(color: UIColor) {
         
         var frame = CGRect()
         
@@ -43,7 +42,6 @@ extension UIView {
 			opaqueView.fade(true)
 			opaqueView.removeFromSuperview()
 		}
-			
 	}
 	
 	func fade(fading: Bool, duration: NSTimeInterval = 1.0) {
@@ -54,11 +52,8 @@ extension UIView {
 		} else {
 			self.alpha = 0.0
 			UIView.animateWithDuration(duration) {
-				self.alpha = 0.8
+				self.alpha = 0.6
 			}
 		}
-		
 	}
-	
-	
 }

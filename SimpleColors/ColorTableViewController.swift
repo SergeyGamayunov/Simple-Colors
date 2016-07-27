@@ -8,8 +8,14 @@
 
 import UIKit
 
+protocol ColorTableViewControllerDelegate: class {
+	func colorTableViewController(controller: ColorTableViewController, didSelectColor color: UIColor)
+}
+
 class ColorTableViewController: DragNDropViewController {
-    
+	
+	weak var delegate: ColorTableViewControllerDelegate?
+	
     var userRowHeight: CGFloat = 0
     var selectedCell: Int = 0
     var showView: UIView!
@@ -73,9 +79,11 @@ class ColorTableViewController: DragNDropViewController {
 		//created dictionary with info we want to passed back to root view
 		let color = DataBase.getColorAtIndex(indexPath.row).color
 		
+		delegate?.colorTableViewController(self, didSelectColor: color)
+		
 		//posted notiications
-		let userInfo = ["color": color]
-		NSNotificationCenter.defaultCenter().postNotificationName("SecVCPopped", object: self, userInfo: userInfo)
+//		let userInfo = ["color": color]
+//		NSNotificationCenter.defaultCenter().postNotificationName("SecVCPopped", object: self, userInfo: userInfo)
 		
 		navigationController?.setNavigationBarHidden(true, animated: true)
 		navigationController?.popToRootViewControllerAnimated(true)
@@ -94,7 +102,7 @@ class ColorTableViewController: DragNDropViewController {
         
         let delete = UITableViewRowAction(style: .Destructive, title: "Delete") { _,_ in
             DataBase.removeColorAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         }
         
         return [delete, showColor]
@@ -113,6 +121,7 @@ class ColorTableViewController: DragNDropViewController {
         let frameForShowView = CGRect(origin: CGPoint(x: 0, y: 0), size: sizeForShowView)
 		
         showView = UIView(frame: frameForShowView)
+		showView.center = screenCenter
 		showView.backgroundColor = color
         showView.layer.cornerRadius = showView.bounds.width * 0.15
 		
@@ -122,14 +131,12 @@ class ColorTableViewController: DragNDropViewController {
 		infoLabel.font = UIFont(name: "Helvetica Neue", size: 18.0)
 		infoLabel.textColor = color!.contrastColor().colorWithAlphaComponent(0.5)
 		infoLabel.textAlignment = .Center
-		
-		
-		
-        tableView.addOpaqueView(0.7, color: UIColor.blackColor())
-		
-		showView.center = screenCenter
-		showView.center.x += tableView.bounds.width
 		showView.addSubview(infoLabel)
+		
+        tableView.addOpaqueView(.blackColor())
+		
+		showView.center.x += tableView.bounds.width
+		
 		tableView.addSubview(showView)
 		
 		infoLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -157,6 +164,7 @@ class ColorTableViewController: DragNDropViewController {
         tableView.removeOpaqueView()
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         tableView.scrollEnabled = true
+		tableView.userInteractionEnabled = true
     }
     
     override func changeItemsAtIndexes(first: Int, second: Int) {
@@ -199,6 +207,8 @@ class ColorTableViewController: DragNDropViewController {
             presentViewController(alCont, animated: true, completion: nil)
         }
     }
+	
+	
 }
 
 
