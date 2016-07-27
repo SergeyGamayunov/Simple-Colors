@@ -1,5 +1,8 @@
 # SimpleColors
-iPhone app for picking color and explore itt RGB and HEX representation. iOS 9.0 and higher
+iPhone app for picking color and explore its RGB and HEX representation. iOS 9.0 and higher
+
+![alt tag](https://cloud.githubusercontent.com/assets/14821368/16731635/e885d9b6-4781-11e6-896d-9bba08265962.gif)
+![alt tag](https://cloud.githubusercontent.com/assets/14821368/16731744/769e40bc-4782-11e6-83e7-96142b886b8e.gif)
 
 ## Main features
 - Picking color from photo from iPhone photo library
